@@ -3,181 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Inácio & Maria de Fátima | Lista de Casamento</title>
+    <title>Lista de Casamento | Inácio & Maria de Fátima</title>
     
     <link rel="stylesheet" href="style.css">
     
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header id="app-header">
-        <button id="btn-back" class="icon-btn hidden" onclick="app.goBack()">
-            <i class="fa-solid fa-chevron-left"></i>
+    <header id="main-header">
+        <button class="header-btn" id="global-back-btn" onclick="app.goBack()" style="visibility: hidden;">
+            <i class="fas fa-chevron-left"></i>
         </button>
-        <h1 class="brand-title">Inácio & Maria</h1>
-        <div class="cart-wrapper" onclick="app.navigate('cart')">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span id="cart-badge" class="badge">0</span>
+        <h1 id="header-title">Inácio & Maria</h1>
+        <div class="header-btn cart-icon-wrapper" id="header-cart-btn" onclick="app.navigateTo('cart-view')" style="visibility: hidden;">
+            <i class="fas fa-shopping-bag"></i>
+            <div class="cart-badge" id="cart-count">0</div>
         </div>
     </header>
 
     <main id="app-container">
-        
-        <section id="view-home" class="view active">
-            <div class="hero-card fade-in">
-                <div class="icon-circle"><i class="fa-solid fa-rings-wedding"></i></div>
-                <h2>Bem-vindos ao nosso sonho</h2>
-                <p>Sua presença é o nosso maior presente. Se desejar nos abençoar com uma lembrança, fique à vontade.</p>
+        <section id="home-view" class="view active">
+            <div class="card" style="margin-top: 1rem;">
+                <div class="hero-icon"><i class="fas fa-gift"></i></div>
+                <p class="overline">Casamento Oficial</p>
+                <h2 class="couple-names">Inácio & Maria de Fátima</h2>
+                <p class="welcome-text">Sejam bem-vindos! Criamos este site com muito carinho para que você viva esse dia especial com a gente!</p>
                 
-                <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="app.navigate('products')">
-                        <i class="fa-solid fa-gift"></i> Ver Lista de Presentes
-                    </button>
-                    <button class="btn btn-outline" onclick="app.navigate('direct-pix')">
-                        <i class="fa-brands fa-pix"></i> Pix Direto (Carinho)
-                    </button>
-                    <a href="https://forms.gle/SEU_LINK_AQUI" target="_blank" class="btn btn-text">
-                        Confirmar Presença <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <div class="action-grid">
+                    <a href="https://forms.gle/F5hS4GznLcqga678A" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-check-circle"></i> Confirmar Presença
                     </a>
+                    <button class="btn btn-outline" onclick="app.navigateTo('product-list-view')">
+                        <i class="fas fa-list-ul"></i> Lista de Presentes (Noivos)
+                    </button>
+                    <a href="https://www.casasbahia.com.br/lista-casamento" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-store"></i> Lista Casas Bahia
+                    </a>
+                    <button class="btn btn-outline" onclick="app.navigateTo('pix-direct-view')">
+                        <i class="fa-brands fa-pix"></i> Chave Pix dos Noivos
+                    </button>
                 </div>
             </div>
-            <footer class="mini-footer">Feito com amor pelos noivos</footer>
+            <p class="footer-credit">Feito com <i class="fas fa-heart text-red"></i> pelos noivos</p>
         </section>
 
-        <section id="view-products" class="view">
-            <div class="view-header">
-                <h3>Escolha um presente</h3>
-                <small>Toque no item para ver detalhes</small>
+        <section id="pix-direct-view" class="view">
+            <div class="card">
+                <div class="hero-icon icon-red"><i class="fas fa-heart"></i></div>
+                <h3>Presenteie com Amor</h3>
+                <p class="welcome-text">Sua presença é o maior presente! Mas caso deseje nos abençoar, ficaremos gratos.</p>
             </div>
-            <div id="product-grid" class="grid-container">
+
+            <p class="section-label">Escolha como deseja presentear:</p>
+
+            <div class="payment-option" onclick="app.togglePayment('pix', 'direct')">
+                <div class="flex-center gap-10">
+                    <i class="fa-brands fa-pix text-green icon-lg"></i>
+                    <span class="bold">PIX (Recomendado)</span>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="direct-pix-content" class="hidden card animate-fade">
+                <p class="sm-text mb-1">Use a chave abaixo no app do seu banco:</p>
+                <div class="pix-key-box" id="pix-key-direct-val">pix@inacioemaria.com.br</div>
+                <button class="btn btn-success" onclick="app.copyPix('pix-key-direct-val')">
+                    <i class="fas fa-copy"></i> Copiar Chave Pix
+                </button>
+            </div>
+
+            <div class="payment-option" onclick="app.togglePayment('card', 'direct')">
+                <div class="flex-center gap-10">
+                    <i class="fas fa-credit-card text-primary icon-lg"></i>
+                    <span class="bold">Cartão de Crédito</span>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="direct-card-content" class="hidden card animate-fade">
+                <p class="sm-text mb-1"><i class="fas fa-info-circle text-primary"></i> Selecione um valor:</p>
+                <div class="card-links-grid" id="direct-card-links">
+                    </div>
+                <p class="xs-text mt-1">Abre em nova guia segura (Mercado Pago).</p>
+            </div>
+        </section>
+
+        <section id="product-list-view" class="view">
+            <div class="products-header">
+                <h3>Itens Disponíveis</h3>
+                <span>Ordenado por: Destaque</span>
+            </div>
+            <div class="product-grid" id="product-grid">
                 </div>
             <div class="spacer"></div>
         </section>
 
-        <section id="view-cart" class="view">
+        <section id="cart-view" class="view">
             <h3>Seu Carrinho</h3>
+            <div id="cart-items-container">
+                </div>
             
-            <div id="cart-empty-state" class="empty-state">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <p>Seu carrinho está vazio.</p>
-                <button class="btn btn-primary" onclick="app.navigate('products')">Escolher Presentes</button>
-            </div>
-
-            <div id="cart-content" class="hidden">
-                <div id="cart-list" class="list-group"></div>
-                
-                <div class="cart-summary-fixed">
-                    <div class="summary-row">
-                        <span>Total</span>
-                        <span id="cart-total-display" class="highlight-price">R$ 0,00</span>
-                    </div>
-                    <div class="summary-actions">
-                        <button class="btn btn-outline small" onclick="app.navigate('products')">+ Itens</button>
-                        <button class="btn btn-primary" onclick="app.navigate('checkout')">Finalizar</button>
-                    </div>
+            <div id="cart-footer" class="hidden cart-total-bar">
+                <div class="flex-between align-end mb-1">
+                    <span class="text-light">Total do presente:</span>
+                    <span id="cart-total" class="total-price">R$ 0,00</span>
+                </div>
+                <div class="grid-2-1">
+                    <button class="btn btn-outline" onclick="app.navigateTo('product-list-view')">+ Itens</button>
+                    <button class="btn btn-primary" onclick="app.navigateTo('checkout-form-view')">Finalizar</button>
                 </div>
             </div>
         </section>
 
-        <section id="view-checkout" class="view">
-            <div class="form-card fade-in">
+        <section id="checkout-form-view" class="view">
+            <div class="card text-left">
                 <h3>Identificação</h3>
-                <p class="subtitle">Para sabermos quem enviou este carinho.</p>
-                
-                <form id="checkout-form">
-                    <div class="input-group">
+                <p class="sm-text text-light mb-2">Para sabermos quem enviou este carinho.</p>
+                <form onsubmit="app.submitCheckoutForm(event)">
+                    <div class="form-group">
                         <label>Nome Completo</label>
-                        <input type="text" id="input-name" placeholder="Ex: Família Silva" required>
+                        <input type="text" id="guest-name" required placeholder="Ex: João e Maria">
                     </div>
-                    <div class="input-group">
+                    <div class="form-group">
                         <label>WhatsApp</label>
-                        <input type="tel" id="input-phone" placeholder="(00) 90000-0000" required>
+                        <input type="tel" id="guest-phone" required placeholder="(XX) 99999-9999">
                     </div>
-                    <div class="input-group">
-                        <label>Mensagem aos Noivos</label>
-                        <textarea id="input-message" rows="3" placeholder="Escreva uma mensagem especial..."></textarea>
+                    <div class="form-group">
+                        <label>Mensagem aos noivos</label>
+                        <textarea id="guest-message" rows="4" placeholder="Escreva uma mensagem especial..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ir para Pagamento</button>
+                    <button type="submit" class="btn btn-primary">Ir para Pagamento <i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>
         </section>
 
-        <section id="view-payment" class="view">
-            <div class="payment-header">
-                <p>Valor total do presente</p>
-                <h2 id="payment-total-display">R$ 0,00</h2>
+        <section id="payment-selection-view" class="view">
+            <h3>Pagamento</h3>
+            <div class="card flex-between align-center mb-2">
+                <div class="text-left">
+                    <p class="overline">Total a Pagar</p>
+                    <h2 class="text-primary" id="payment-total">R$ 0,00</h2>
+                </div>
+                <i class="fas fa-gift icon-lg text-light"></i>
             </div>
 
-            <div class="payment-options">
-                <div class="payment-card ripple" onclick="app.togglePayment('pix')">
-                    <div class="p-icon"><i class="fa-brands fa-pix text-green"></i></div>
-                    <div class="p-info">
-                        <strong>Pagar com PIX</strong>
-                        <span>Aprovação imediata (Recomendado)</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
+            <p class="section-label">Como prefere pagar?</p>
 
-                <div class="payment-card ripple" onclick="app.togglePayment('card')">
-                    <div class="p-icon"><i class="fa-regular fa-credit-card text-blue"></i></div>
-                    <div class="p-info">
-                        <strong>Cartão de Crédito</strong>
-                        <span>Via Mercado Pago</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right"></i>
+            <div class="payment-option" onclick="app.togglePayment('pix', 'checkout')">
+                <div class="flex-center gap-10">
+                    <i class="fa-brands fa-pix text-green icon-lg"></i>
+                    <span class="bold">PIX (Recomendado)</span>
                 </div>
+                <i class="fas fa-chevron-down"></i>
             </div>
-        </section>
-
-        <section id="view-direct-pix" class="view">
-            <div class="pix-container fade-in">
-                <i class="fa-brands fa-pix big-icon"></i>
-                <h3>Chave Pix dos Noivos</h3>
-                <p>Copie a chave abaixo e realize o pagamento no app do seu banco.</p>
-                
-                <div class="pix-box">
-                    <span id="pix-key">pix@inacioemaria.com.br</span>
-                    <button class="btn-copy" onclick="app.copyPix()">
-                        <i class="fa-regular fa-copy"></i>
-                    </button>
-                </div>
-
-                <button class="btn btn-success" onclick="app.finishOrder('Pix Direto')">
-                    Já realizei o pagamento
+            <div id="payment-pix-content" class="hidden card animate-fade">
+                <p class="sm-text mb-1">Chave Pix Copia e Cola:</p>
+                <div class="pix-key-box" id="pix-key-checkout">00020126360014BR.GOV.BCB.PIX0114+55329999999995204000053039865802BR5925Inacio e Maria de Fatima6009SAO PAULO62070503***6304ABCD</div>
+                <button class="btn btn-success" onclick="app.confirmPixPayment()">
+                    <i class="fas fa-copy"></i> Copiar e Confirmar
                 </button>
             </div>
-        </section>
 
-        <section id="view-success" class="view">
-            <div class="success-content fade-in">
-                <div class="check-animation">
-                    <i class="fa-solid fa-check"></i>
+            <div class="payment-option" onclick="app.togglePayment('card', 'checkout')">
+                <div class="flex-center gap-10">
+                    <i class="fas fa-credit-card text-primary icon-lg"></i>
+                    <span class="bold">Cartão de Crédito</span>
                 </div>
-                <h2>Muito Obrigado!</h2>
-                <p>Seu gesto enche nossos corações de alegria. Mal podemos esperar para celebrar com você!</p>
-                <p class="signature">Inácio & Maria</p>
-                <button class="btn btn-outline" onclick="location.reload()">Voltar ao Início</button>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="payment-card-content" class="hidden card animate-fade">
+                <p class="sm-text mb-1">Selecione o valor aproximado:</p>
+                <div class="card-links-grid" id="checkout-card-links">
+                    </div>
             </div>
         </section>
 
+        <section id="thank-you-view" class="view">
+            <div class="card mt-4">
+                <div class="icon-xl text-green mb-1"><i class="fas fa-check-circle"></i></div>
+                <h2 class="mb-1">Muito Obrigado!</h2>
+                <p class="text-main mb-2">Agradecemos seu presente! Sua participação é fundamental.</p>
+                <hr>
+                <p class="signature">Inácio & Maria de Fátima</p>
+                <button class="btn btn-outline mt-3" onclick="app.resetApp()">Voltar ao Início</button>
+            </div>
+        </section>
     </main>
 
-    <div id="product-modal" class="modal-overlay">
-        <div class="modal-content slide-up">
-            <button class="modal-close" onclick="app.closeModal()">&times;</button>
+    <div id="product-modal" class="modal-overlay hidden" onclick="app.closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="app.closeModal(null, true)"><i class="fas fa-times"></i></button>
             <div id="modal-body">
-                </div>
-        </div>
-    </div>
-
-    <div id="card-links-modal" class="modal-overlay">
-        <div class="modal-content slide-up">
-            <button class="modal-close" onclick="app.closeCardModal()">&times;</button>
-            <h3>Selecione o Valor</h3>
-            <p class="modal-desc">Escolha o valor correspondente ou mais próximo ao seu presente para pagar via Mercado Pago.</p>
-            <div id="card-links-grid" class="links-grid">
                 </div>
         </div>
     </div>
