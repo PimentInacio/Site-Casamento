@@ -1,5 +1,5 @@
 :root {
-    --primary: #91A8D0; /* Azul Serenity */
+    --primary: #91A8D0;
     --primary-dark: #7890b8;
     --secondary: #F7F9FC;
     --white: #ffffff;
@@ -29,18 +29,28 @@ header {
     background: var(--primary);
     color: var(--white);
     height: var(--header-height);
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 1.5rem;
     position: sticky; top: 0; z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+}
+/* Container interno do header para centralizar no Desktop */
+.header-content {
+    max-width: 900px; margin: 0 auto; height: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 1.5rem;
 }
 
 header h1 { font-size: 1.2rem; font-weight: 600; }
 .header-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; position: relative; }
 .cart-badge { position: absolute; top: 0; right: 0; background: var(--accent-red); color: white; font-size: 0.7rem; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid var(--primary); }
 
-/* --- Views & Animation --- */
-.view { display: none; padding: 1rem; max-width: 600px; margin: 0 auto; min-height: calc(100vh - var(--header-height)); animation: fadeIn 0.4s ease; }
+/* --- Main Container (Views) --- */
+#app-container {
+    max-width: 900px; /* Limite para Desktop */
+    margin: 0 auto;
+}
+
+.view { display: none; padding: 1rem; min-height: calc(100vh - var(--header-height)); animation: fadeIn 0.4s ease; }
 .view.active { display: block; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -72,7 +82,9 @@ header h1 { font-size: 1.2rem; font-weight: 600; }
 /* --- Product Grid --- */
 .products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer; display: flex; flex-direction: column; }
+.product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer; display: flex; flex-direction: column; transition: transform 0.2s; }
+.product-card:hover { transform: translateY(-5px); }
+
 .product-image-container { position: relative; width: 100%; padding-top: 100%; background: #eee; }
 .product-image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 .product-info { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -87,7 +99,7 @@ header h1 { font-size: 1.2rem; font-weight: 600; }
 @keyframes popUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .modal-close-btn { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.8); border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: #555; z-index: 10; display: flex; align-items: center; justify-content: center; }
 
-/* --- Estilos dentro do Modal --- */
+/* Modal Internals */
 .modal-image { width: 100%; height: 300px; object-fit: cover; }
 .modal-details { padding: 20px; text-align: left; }
 .modal-title { font-size: 1.5rem; font-family: 'Playfair Display', serif; margin-bottom: 5px; color: var(--text-main); }
@@ -96,7 +108,7 @@ header h1 { font-size: 1.2rem; font-weight: 600; }
 
 /* --- Cart & Payment --- */
 .cart-item { display: flex; justify-content: space-between; align-items: center; background: var(--white); padding: 1rem; border-radius: var(--radius); margin-bottom: 1rem; border-left: 4px solid var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-.cart-total-bar { background: var(--white); padding: 1.5rem; border-radius: var(--radius) var(--radius) 0 0; position: fixed; bottom: 0; left: 0; right: 0; max-width: 600px; margin: 0 auto; z-index: 900; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
+.cart-total-bar { background: var(--white); padding: 1.5rem; border-radius: var(--radius) var(--radius) 0 0; position: fixed; bottom: 0; left: 0; right: 0; max-width: 900px; margin: 0 auto; z-index: 900; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
 .total-price { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
 
 .payment-option { background: var(--white); padding: 1.2rem; border: 2px solid transparent; border-radius: var(--radius); margin-bottom: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
@@ -128,3 +140,59 @@ header h1 { font-size: 1.2rem; font-weight: 600; }
 .sm-text { font-size: 0.9rem; } .xs-text { font-size: 0.75rem; }
 .icon-lg { font-size: 1.5rem; } .icon-xl { font-size: 4rem; }
 .section-label { font-size: 0.9rem; color: #666; margin-bottom: 1rem; font-weight: 600; padding-left: 5px; }
+
+/* ---------------------------------------------------- */
+/* --- MEDIA QUERIES (OTIMIZAÇÃO IPAD/NOTEBOOK) --- */
+/* ---------------------------------------------------- */
+
+/* Tablet e Telas Maiores (min 768px) */
+@media (min-width: 768px) {
+    body {
+        /* Fundo diferente para destacar que é uma "app view" centralizada */
+        background-color: #eef2f6; 
+    }
+    
+    /* Grade de 3 colunas para tablets */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .view {
+        padding: 2rem;
+    }
+    
+    .action-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .action-grid .btn { margin-top: 0; }
+}
+
+/* Notebook e Desktop (min 1024px) */
+@media (min-width: 1024px) {
+    /* Grade de 4 colunas para desktop */
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Modal mais elegante no desktop (não ocupa tanto espaço) */
+    .modal-content {
+        max-width: 700px;
+        display: flex;
+        overflow: hidden;
+    }
+    
+    .modal-image {
+        width: 50%;
+        height: auto;
+    }
+    
+    .modal-details {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
