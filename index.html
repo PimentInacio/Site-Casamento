@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Casamento | Inácio & Maria de Fátima</title>
+    <!-- Ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Fonte Google (Inter e Playfair Display para toques elegantes) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta de Cores */
+            --primary: #91A8D0; /* Azul Serenity */
+            --primary-dark: #7890b8;
+            --secondary: #F7F9FC; /* Fundo Off-white */
+            --white: #ffffff;
+            --text-main: #4a4a4a;
+            --text-light: #888888;
+            --accent-red: #E02041; /* Vermelho para botões de ação/preço */
+            --success: #2ecc71;
+            
+            /* UI Elements */
+            --shadow: 0 4px 15px rgba(145, 168, 208, 0.15);
+            --radius: 16px;
+            --header-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--secondary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Tipografia Elegante */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Header Fixo --- */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent-red);
+            color: white;
+            font-size: 0.7rem;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            padding: 0 4px;
+            border: 2px solid var(--primary);
+        }
+
+        /* --- Gerenciamento de Views (SPA) --- */
+        .view {
+            display: none;
+            padding: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Componentes --- */
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+            text-decoration: none;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(145, 168, 208, 0.4);
+        }
+
+        .btn-red {
+            background-color: var(--accent-red);
+            color: white;
+            box-shadow: 0 4px 10px rgba(224, 32, 65, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Home View --- */
+        #home-view {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 0;
+        }
+
+        .hero-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: #f0f4fa;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .couple-names {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .welcome-text {
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* --- Lista de Produtos (Shopee Style) --- */
+        .products-header {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* Aspect Ratio 1:1 */
+            background-color: #eee;
+        }
+
+        .product-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 10px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            color: var(--accent-red);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .product-installments {
+            font-size: 0.65rem;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        /* --- Detalhe do Produto --- */
+        .detail-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .detail-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .detail-desc {
+            color: var(--text-light);
+            text-align: left;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .detail-price-tag {
+            font-size: 2rem;
+            color: var(--accent-red);
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Carrinho --- */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border-left: 4px solid var(--primary);
+        }
+
+        .cart-item-info strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .cart-total-bar {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius) var(--radius) 0 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+            z-index: 900;
+        }
+
+        /* --- Formulários --- */
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #fafafa;
+            transition: border-color 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+
+        /* --- Pagamento / Opções --- */
+        .payment-option {
+            background: var(--white);
+            padding: 1.2rem;
+            border: 2px solid transparent;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .payment-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary);
+            background-color: #f0f4fa;
+        }
+
+        .pix-key-box {
+            background: #eef2f7;
+            padding: 1.2rem;
+            border-radius: 8px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            border: 1px dashed var(--primary);
+            color: #555;
+            text-align: center;
+        }
+
+        .card-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .card-link-btn {
+            background: var(--white);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 5px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        
+        .card-link-btn:hover, .card-link-btn:active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Helper Classes */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .mb-2 { margin-bottom: 1rem; }
+        
+        /* Loading Animation Placeholder */
+        .loading {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- Header Geral -->
+    <header id="main-header">
+        <button class="header-btn" id="global-back-btn" onclick="goBack()" style="visibility: hidden;">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 id="header-title">Inácio & Maria</h1>
+        <!-- Carrinho oculto por padrão (visibility: hidden) para manter o layout -->
+        <div class="header-btn cart-icon-wrapper" id="header-cart-btn" onclick="navigateTo('cart-view')" style="visibility: hidden;">
+            <i class="fas fa-shopping-bag"></i>
+            <div class="cart-badge" id="cart-count">0</div>
+        </div>
+    </header>
+
+    <!-- 1. Recepção -->
+    <section id="home-view" class="view active">
+        <div class="card" style="margin-top: 2rem;">
+            <div class="hero-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: #999; margin-bottom: 0.5rem;">Casamento Oficial</p>
+            <h2 class="couple-names">Inácio & Maria de Fátima</h2>
+            <p class="welcome-text">Sejam bem-vindos! Criamos este site do nosso casamento com muito carinho, reunindo todas as informações importantes para que você viva esse dia especial com a gente!</p>
+            
+            <!-- Botão 0: Confirmar Presença -->
+            <a href="https://forms.gle/F5hS4GznLcqga678A" target="_blank" class="btn btn-primary">
+                <i class="fas fa-check-circle"></i> Confirmar Presença
+            </a>
+
+            <!-- Botão 1: Lista Noivos (Interna) -->
+            <button class="btn btn-outline" onclick="navigateTo('product-list-view')">
+                <i class="fas fa-list-ul"></i> Lista de Presentes (Noivos)
+            </button>
+            
+            <!-- Botão 2: Lista Casas Bahia (Externa) -->
+            <a href="https://www.casasbahia.com.br/lista-casamento" target="_blank" class="btn btn-primary">
+                <i class="fas fa-store"></i> Lista de Presentes (Casas Bahia)
+            </a>
+
+            <!-- Botão 3: Chave Pix (Nova página interativa) -->
+            <button class="btn btn-outline" onclick="navigateTo('pix-direct-view')">
+                <i class="fa-brands fa-pix"></i> Chave Pix dos Noivos
+            </button>
+        </div>
+        
+        <p class="text-center" style="font-size: 0.8rem; color: #aaa; margin-top: 2rem;">
+            Feito com <i class="fas fa-heart" style="color: var(--accent-red)"></i> pelos noivos
+        </p>
+    </section>
+
+    <!-- 2. Página Pix Direto / Doação Rápida -->
+    <section id="pix-direct-view" class="view">
+        <div class="card" style="margin-top: 1rem;">
+            <div class="hero-icon" style="background: rgba(224, 32, 65, 0.1);">
+                <i class="fas fa-heart" style="color: var(--accent-red);"></i>
+            </div>
+            <h3 style="color: var(--primary-dark);">Presenteie com Amor</h3>
+            <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.95rem; line-height: 1.5;">
+                A sua presença é o nosso maior presente! Mas caso deseje nos abençoar com uma lembrança, ficaremos imensamente gratos.
+            </p>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; font-weight: 600; padding-left: 5px;">Escolha como deseja presentear:</p>
+
+        <!-- Opção Pix Direto -->
+        <div class="payment-option" onclick="toggleDirectPayment('pix', this)">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-brands fa-pix" style="color: var(--success); font-size: 1.5rem;"></i>
+                <span style="font-weight: 600;">PIX (Recomendado)</span>
+            </div>
+            <i class="fas fa-chevron-down text-light"></i>
+        </div>
+        <div id="direct-pix-content" class="hidden card animate-fade">
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Use a chave abaixo no app do seu banco:</p>
+            <div class="pix-key-box" id="pix-key-direct-val">
+                pix@inacioemaria.com.br
+            </div>
+            <button class="btn btn-success" style="background-color: var(--success); color: white;" onclick="copyPix('pix-key-direct-val')">
+                <i class="fas fa-copy"></i> Copiar Chave Pix
+            </button>
+        </div>
+
+        <!-- Opção Cartão Direto -->
+        <div class="payment-option" onclick="toggleDirectPayment('card', this)">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-credit-card" style="color: var(--primary); font-size: 1.5rem;"></i>
+                <span style="font-weight: 600;">Cartão de Crédito</span>
+            </div>
+            <i class="fas fa-chevron-down text-light"></i>
+        </div>
+        <div id="direct-card-content" class="hidden card animate-fade">
+            <p style="font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5;">
+                <i class="fas fa-info-circle text-primary"></i> Selecione um valor de carinho para enviar via Mercado Pago:
+            </p>
+            
+            <div class="card-links-grid">
+                <a href="#" class="card-link-btn" onclick="finishCard(50)">R$ 50</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(75)">R$ 75</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(100)">R$ 100</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(150)">R$ 150</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(200)">R$ 200</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(300)">R$ 300</a>
+            </div>
+            <p style="font-size: 0.75rem; color: #999; margin-top: 15px;">Abre em nova guia segura.</p>
+        </div>
+    </section>
+
+    <!-- 3. Lista de Produtos (Shopee Style) -->
+    <section id="product-list-view" class="view">
+        <div class="products-header">
+            <h3 style="font-weight: 600; color: var(--primary-dark);">Itens Disponíveis</h3>
+            <span style="font-size: 0.8rem; color: #888;">Ordenado por: Destaque</span>
+        </div>
+        
+        <div class="product-grid" id="product-grid">
+            <!-- Produtos inseridos via JS -->
+        </div>
+        <div style="height: 60px;"></div> <!-- Espaço extra scroll -->
+    </section>
+
+    <!-- 4. Detalhes do Produto -->
+    <section id="product-detail-view" class="view">
+        <div id="product-detail-content">
+            <!-- Preenchido via JS -->
+        </div>
+    </section>
+
+    <!-- 5. Carrinho -->
+    <section id="cart-view" class="view">
+        <h3 style="margin-bottom: 1.5rem; color: var(--primary-dark);">Seu Carrinho</h3>
+        <div id="cart-items-container">
+            <div class="text-center" style="padding: 3rem 1rem;">
+                <i class="fas fa-shopping-basket" style="font-size: 3rem; color: #ddd; margin-bottom: 1rem;"></i>
+                <p style="color: #999;">Seu carrinho está vazio.</p>
+                <button class="btn btn-outline" onclick="navigateTo('product-list-view')" style="margin-top: 1.5rem;">
+                    Ver Presentes
+                </button>
+            </div>
+        </div>
+        
+        <div id="cart-footer" class="hidden">
+            <div style="height: 100px;"></div> <!-- Espaço para não cobrir itens -->
+            <div class="cart-total-bar">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: flex-end;">
+                    <span style="color: #666; font-size: 0.9rem;">Total do presente:</span>
+                    <span id="cart-total" style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">R$ 0,00</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px;">
+                    <button class="btn btn-outline" style="margin:0; padding: 10px; font-size: 0.9rem;" onclick="navigateTo('product-list-view')">
+                        + Itens
+                    </button>
+                    <button class="btn btn-primary" style="margin:0;" onclick="navigateTo('checkout-form-view')">
+                        Finalizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Formulário de Identificação -->
+    <section id="checkout-form-view" class="view">
+        <div class="card">
+            <h3 style="margin-bottom: 0.5rem;">Identificação</h3>
+            <p style="margin-bottom: 2rem; font-size: 0.9rem; color: #888;">Para sabermos quem nos enviou este carinho.</p>
+            
+            <form onsubmit="submitCheckoutForm(event)">
+                <div class="form-group">
+                    <label>Seu Nome Completo</label>
+                    <input type="text" id="guest-name" required placeholder="Ex: João e Maria da Silva">
+                </div>
+                <div class="form-group">
+                    <label>Seu WhatsApp</label>
+                    <input type="tel" id="guest-phone" required placeholder="(XX) 99999-9999">
+                </div>
+                <div class="form-group">
+                    <label>Mensagem para os noivos</label>
+                    <textarea id="guest-message" rows="4" placeholder="Escreva uma mensagem especial..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Ir para Pagamento <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 7. Pagamento (Checkout) -->
+    <section id="payment-selection-view" class="view">
+        <h3 style="color: var(--primary-dark); margin-bottom: 1rem;">Pagamento</h3>
+        
+        <div class="card" style="padding: 1.5rem; text-align: left; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <p style="font-size: 0.8rem; color: #666; text-transform: uppercase;">Total a Pagar</p>
+                <h2 style="color: var(--primary); margin: 0;" id="payment-total">R$ 0,00</h2>
+            </div>
+            <i class="fas fa-gift" style="font-size: 1.5rem; color: #ddd;"></i>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem; font-weight: 600;">Como você prefere presentear?</p>
+        
+        <!-- Opção Pix Checkout -->
+        <div class="payment-option" onclick="toggleCheckoutPayment('pix', this)">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-brands fa-pix" style="color: var(--success); font-size: 1.5rem;"></i>
+                <span style="font-weight: 600;">PIX (Recomendado)</span>
+            </div>
+            <i class="fas fa-chevron-down text-light"></i>
+        </div>
+        <div id="payment-pix-content" class="hidden card animate-fade">
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Use a chave abaixo no app do seu banco:</p>
+            <div class="pix-key-box" id="pix-key-checkout">
+                00020126360014BR.GOV.BCB.PIX0114+55329999999995204000053039865802BR5925Inacio e Maria de Fatima6009SAO PAULO62070503***6304ABCD
+            </div>
+            <button class="btn btn-success" style="background-color: var(--success); color: white;" onclick="confirmPixPayment()">
+                <i class="fas fa-copy"></i> Copiar e Confirmar
+            </button>
+        </div>
+
+        <!-- Opção Cartão Checkout -->
+        <div class="payment-option" onclick="toggleCheckoutPayment('card', this)">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-credit-card" style="color: var(--primary); font-size: 1.5rem;"></i>
+                <span style="font-weight: 600;">Cartão de Crédito</span>
+            </div>
+            <i class="fas fa-chevron-down text-light"></i>
+        </div>
+        <div id="payment-card-content" class="hidden card animate-fade">
+            <p style="font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5;">
+                <i class="fas fa-info-circle text-primary"></i> Selecione o valor aproximado para pagar via Mercado Pago:
+            </p>
+            
+            <div class="card-links-grid">
+                <a href="#" class="card-link-btn" onclick="finishCard(25)">R$ 25</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(50)">R$ 50</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(75)">R$ 75</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(100)">R$ 100</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(125)">R$ 125</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(150)">R$ 150</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(175)">R$ 175</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(200)">R$ 200</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(250)">R$ 250</a>
+                <a href="#" class="card-link-btn" onclick="finishCard(300)">R$ 300</a>
+            </div>
+            <p style="font-size: 0.75rem; color: #999; margin-top: 15px;">Abre em nova guia segura.</p>
+        </div>
+    </section>
+
+    <!-- 8. Agradecimento -->
+    <section id="thank-you-view" class="view">
+        <div class="card" style="margin-top: 4rem;">
+            <div style="font-size: 4rem; color: var(--success); margin-bottom: 1rem;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 style="margin-bottom: 1rem;">Muito Obrigado!</h2>
+            <p style="line-height: 1.6; color: var(--text-main); margin-bottom: 2rem;">
+                Agradecemos seu presente e ficamos muito felizes! Sua participação no nosso sonho é fundamental.
+            </p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
+            
+            <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); font-style: italic;">
+                Inácio & Maria de Fátima
+            </p>
+            
+            <button class="btn btn-outline" onclick="resetApp()" style="margin-top: 3rem;">
+                Voltar ao Início
+            </button>
+        </div>
+    </section>
+
+    <script>
+        // --- DADOS (MOCK) ---
+        // Aqui estão os produtos da lista
+        const products = [
+            { id: 1, name: "Liquidificador Turbo 1200w", price: 149.90, desc: "Para nossas vitaminas e receitas especiais.", img: "https://images.unsplash.com/photo-1570222094114-28a9d88a27e6?auto=format&fit=crop&w=500&q=60" },
+            { id: 2, name: "Jogo de Toalhas Banho", price: 89.90, desc: "Maciez e conforto para o nosso novo lar.", img: "https://images.unsplash.com/photo-1616627547584-bf28cee262db?auto=format&fit=crop&w=500&q=60" },
+            { id: 3, name: "Cafeteira Expresso", price: 125.00, desc: "Amamos café! Esse presente vai ser muito usado.", img: "https://images.unsplash.com/photo-1517080314053-e546d148e658?auto=format&fit=crop&w=500&q=60" },
+            { id: 4, name: "Jogo de Panelas Antiaderente", price: 299.90, desc: "Fundamental para prepararmos nossos jantares.", img: "https://images.unsplash.com/photo-1584990347449-a64648a6e3d8?auto=format&fit=crop&w=500&q=60" },
+            { id: 5, name: "Faqueiro Inox 24 Peças", price: 75.00, desc: "Elegância e durabilidade para a nossa mesa.", img: "https://images.unsplash.com/photo-1581788223933-0de329e7465d?auto=format&fit=crop&w=500&q=60" },
+            { id: 6, name: "Cota: Jantar Romântico Lua de Mel", price: 200.00, desc: "Ajude-nos a ter uma noite inesquecível.", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=500&q=60" },
+            { id: 7, name: "Kit Churrasco Completo", price: 150.00, desc: "Para receber a família nos fins de semana.", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=60" },
+            { id: 8, name: "Edredom Casal Queen", price: 180.00, desc: "Noites de sono tranquilas e quentinhas.", img: "https://images.unsplash.com/photo-1522771753014-df00418c4e4f?auto=format&fit=crop&w=500&q=60" }
+        ];
+
+        // Estado da Aplicação
+        let cart = [];
+        let navigationHistory = ['home-view'];
+
+        // --- NAVEGAÇÃO ---
+        function navigateTo(viewId) {
+            // Esconde todas as views
+            document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+            // Mostra a view alvo
+            document.getElementById(viewId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Adiciona ao histórico se for uma navegação nova
+            if (viewId !== navigationHistory[navigationHistory.length - 1]) {
+                navigationHistory.push(viewId);
+            }
+
+            // Controle do botão voltar
+            updateHeader(viewId);
+
+            // Lógica específica da view
+            if (viewId === 'product-list-view') renderProducts();
+            if (viewId === 'cart-view') renderCart();
+            if (viewId === 'payment-selection-view') renderPaymentTotal();
+        }
+
+        function goBack() {
+            if (navigationHistory.length > 1) {
+                navigationHistory.pop(); // Remove atual
+                const previous = navigationHistory[navigationHistory.length - 1];
+                
+                // Manual override: troca a classe active
+                document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+                document.getElementById(previous).classList.add('active');
+                
+                updateHeader(previous);
+            } else {
+                // Se não tem histórico, volta pra home por segurança
+                navigateTo('home-view');
+            }
+        }
+
+        function updateHeader(viewId) {
+            const backBtn = document.getElementById('global-back-btn');
+            const title = document.getElementById('header-title');
+            const cartBtn = document.getElementById('header-cart-btn');
+            
+            // Define quais telas o carrinho deve aparecer (Apenas fluxo da Lista de Presentes)
+            const showCartViews = ['product-list-view', 'product-detail-view', 'cart-view', 'checkout-form-view', 'payment-selection-view'];
+
+            if (showCartViews.includes(viewId)) {
+                cartBtn.style.visibility = 'visible';
+            } else {
+                cartBtn.style.visibility = 'hidden';
+            }
+            
+            if (viewId === 'home-view') {
+                backBtn.style.visibility = 'hidden';
+                title.innerText = "Inácio & Maria";
+            } else if (viewId === 'thank-you-view') {
+                backBtn.style.visibility = 'hidden';
+                title.innerText = "Obrigado!";
+            } else {
+                backBtn.style.visibility = 'visible';
+                
+                // Títulos dinâmicos
+                if(viewId === 'product-list-view') title.innerText = "Lista de Presentes";
+                else if(viewId === 'cart-view') title.innerText = "Carrinho";
+                else if(viewId === 'checkout-form-view') title.innerText = "Identificação";
+                else if(viewId === 'payment-selection-view') title.innerText = "Pagamento";
+                else if(viewId === 'pix-direct-view') title.innerText = "Enviar Carinho";
+                else title.innerText = "Inácio & Maria";
+            }
+        }
+
+        // --- LÓGICA DE PRODUTOS ---
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            if(grid.innerHTML.trim() !== "") return; // Evita re-renderizar se já tem conteúdo (otimização)
+
+            products.forEach(prod => {
+                grid.innerHTML += `
+                    <div class="product-card" onclick="openProductDetail(${prod.id})">
+                        <div class="product-image-container">
+                            <img src="${prod.img}" alt="${prod.name}">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-name">${prod.name}</h4>
+                            <div>
+                                <div class="product-price">R$ ${prod.price.toFixed(2).replace('.', ',')}</div>
+                                <div class="product-installments">1x no cartão ou pix</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openProductDetail(id) {
+            const prod = products.find(p => p.id === id);
+            const content = document.getElementById('product-detail-content');
+            
+            content.innerHTML = `
+                <div class="card" style="padding: 1.5rem;">
+                    <img src="${prod.img}" class="detail-image" alt="${prod.name}">
+                    <h2 class="detail-title">${prod.name}</h2>
+                    <div class="detail-price-tag">R$ ${prod.price.toFixed(2).replace('.', ',')}</div>
+                    <p class="detail-desc">${prod.desc}</p>
+                    
+                    <button class="btn btn-red" onclick="addToCart(${prod.id})">
+                        <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                    </button>
+                </div>
+            `;
+            navigateTo('product-detail-view');
+        }
+
+        // --- LÓGICA DO CARRINHO ---
+        function addToCart(id) {
+            const prod = products.find(p => p.id === id);
+            cart.push(prod);
+            updateCartCount();
+            
+            // Feedback visual rápido
+            const btn = document.querySelector('.btn-red');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+            btn.style.backgroundColor = 'var(--success)';
+            
+            setTimeout(() => {
+                navigateTo('cart-view');
+            }, 600);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const footer = document.getElementById('cart-footer');
+            const totalEl = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center" style="padding: 3rem 1rem;">
+                        <i class="fas fa-shopping-basket" style="font-size: 3rem; color: #e0e0e0; margin-bottom: 1rem;"></i>
+                        <p style="color: #999;">Seu carrinho está vazio.</p>
+                        <button class="btn btn-outline" onclick="navigateTo('product-list-view')" style="margin-top: 1.5rem;">
+                            Ver Presentes
+                        </button>
+                    </div>`;
+                footer.classList.add('hidden');
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <strong>${item.name}</strong>
+                            <div style="color: var(--accent-red); font-weight:bold;">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color: #999; padding: 10px; cursor: pointer;">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            // Espaço no final da lista para não ficar atrás do footer fixo
+            html += '<div style="height: 120px;"></div>';
+
+            container.innerHTML = html;
+            totalEl.innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
+            footer.classList.remove('hidden');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            renderCart();
+        }
+
+        // --- CHECKOUT & PAGAMENTO ---
+        function submitCheckoutForm(e) {
+            e.preventDefault();
+            navigateTo('payment-selection-view');
+        }
+
+        function renderPaymentTotal() {
+            const total = cart.reduce((acc, item) => acc + item.price, 0);
+            document.getElementById('payment-total').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
+        }
+
+        // Lógica de Toggle do Checkout (Lista de Presentes)
+        function toggleCheckoutPayment(type, element) {
+            const pixContent = document.getElementById('payment-pix-content');
+            const cardContent = document.getElementById('payment-card-content');
+            
+            // Remove 'selected' de todos na view atual
+            const options = document.querySelectorAll('#payment-selection-view .payment-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            element.classList.add('selected');
+            
+            if (type === 'pix') {
+                pixContent.classList.remove('hidden');
+                cardContent.classList.add('hidden');
+            } else {
+                pixContent.classList.add('hidden');
+                cardContent.classList.remove('hidden');
+            }
+        }
+
+        // Lógica de Toggle da Doação Direta (Página Pix dos Noivos)
+        function toggleDirectPayment(type, element) {
+            const pixContent = document.getElementById('direct-pix-content');
+            const cardContent = document.getElementById('direct-card-content');
+            
+            // Remove 'selected' de todos na view atual
+            const options = document.querySelectorAll('#pix-direct-view .payment-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            element.classList.add('selected');
+            
+            if (type === 'pix') {
+                pixContent.classList.remove('hidden');
+                cardContent.classList.add('hidden');
+            } else {
+                pixContent.classList.add('hidden');
+                cardContent.classList.remove('hidden');
+            }
+        }
+
+        function copyPix(elementId) {
+            const text = document.getElementById(elementId).innerText.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Chave Pix copiada!");
+                
+                // Se for a tela de doação direta, vai pro agradecimento direto
+                if(elementId === 'pix-key-direct-val') {
+                     navigateTo('thank-you-view');
+                }
+            }).catch(err => {
+                console.error('Erro ao copiar', err);
+                alert("Erro ao copiar automaticamente. Por favor selecione e copie.");
+            });
+        }
+
+        function confirmPixPayment() {
+            // Simula processo de pagamento
+            copyPix('pix-key-checkout');
+            setTimeout(() => {
+                navigateTo('thank-you-view');
+            }, 1000);
+        }
+
+        function finishCard(value) {
+            // Simula clique no link externo
+            // window.open('https://mercadopago.com.br/...', '_blank');
+            
+            // Avança para agradecimento
+            setTimeout(() => {
+                navigateTo('thank-you-view');
+            }, 500);
+            return true;
+        }
+        
+        function resetApp() {
+            cart = [];
+            updateCartCount();
+            navigationHistory = ['home-view'];
+            document.getElementById('product-grid').innerHTML = ''; // Força re-render
+            navigateTo('home-view');
+        }
+    </script>
+</body>
+</html>
