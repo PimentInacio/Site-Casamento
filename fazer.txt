@@ -1,0 +1,10 @@
+Colocar Link de pagamentos cartão
+Colocar chave pix
+
+Integrar memoria usando uma planilha conectada (para guardar as compras numa guia em outra guia da planilha as mensagens)
+
+Botão home:
+- forms de confirmação de presença
+- Lista de Presentes Casas Bahia
+- Lista de Presentes Nossa
+- WhatsApp
