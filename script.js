@@ -1,34 +1,105 @@
 const app = {
-    // Dados
+    // Dados da Aplicação
     data: {
+        // LISTA DE PRODUTOS ATUALIZADA (50 ITENS COM IMAGENS REAIS)
         products: [
-            { id: 1, name: "Liquidificador Turbo 1200w", price: 150.00, desc: "Para nossas vitaminas e receitas especiais.", img: "https://images.unsplash.com/photo-1570222094114-28a9d88a27e6?auto=format&fit=crop&w=500&q=60" },
-            { id: 2, name: "Jogo de Toalhas Banho", price: 100.00, desc: "Maciez e conforto para o nosso novo lar.", img: "https://images.unsplash.com/photo-1616627547584-bf28cee262db?auto=format&fit=crop&w=500&q=60" },
-            { id: 3, name: "Cafeteira Expresso", price: 125.00, desc: "Amamos café! Esse presente vai ser muito usado.", img: "https://images.unsplash.com/photo-1517080314053-e546d148e658?auto=format&fit=crop&w=500&q=60" },
-            { id: 4, name: "Jogo de Panelas Antiaderente", price: 300.00, desc: "Fundamental para prepararmos nossos jantares.", img: "https://images.unsplash.com/photo-1584990347449-a64648a6e3d8?auto=format&fit=crop&w=500&q=60" },
-            { id: 5, name: "Faqueiro Inox 24 Peças", price: 75.00, desc: "Elegância e durabilidade para a nossa mesa.", img: "https://images.unsplash.com/photo-1581788223933-0de329e7465d?auto=format&fit=crop&w=500&q=60" },
-            { id: 6, name: "Cota: Jantar Romântico", price: 200.00, desc: "Ajude-nos a ter uma noite inesquecível.", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=500&q=60" },
-            { id: 7, name: "Kit Churrasco Completo", price: 150.00, desc: "Para receber a família nos fins de semana.", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=60" },
-            { id: 8, name: "Edredom Casal Queen", price: 175.00, desc: "Noites de sono tranquilas e quentinhas.", img: "https://images.unsplash.com/photo-1522771753014-df00418c4e4f?auto=format&fit=crop&w=500&q=60" }
+            { id: 1, name: "Chapinha", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1562362336-659635038e94?w=500" },
+            { id: 2, name: "Secador de Cabelo", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500" },
+            { id: 3, name: "Escova Secadora Modeladora", price: 250.00, desc: "", img: "https://images.unsplash.com/photo-1595992367809-28c009d6c40f?w=500" }, // Imagem ilustrativa de cabelo/escova
+            { id: 4, name: "Panela de Pressão Elétrica", price: 275.00, desc: "", img: "https://images.unsplash.com/photo-1544229983-936cb7d727eb?w=500" }, // Panela elétrica similar
+            { id: 5, name: "Furadeira", price: 225.00, desc: "", img: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500" },
+            { id: 6, name: "Maleta de Ferramentas Completa", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=500" },
+            { id: 7, name: "Airfryer", price: 300.00, desc: "", img: "https://images.unsplash.com/photo-1626139576127-6c0784177b90?w=500" },
+            { id: 8, name: "Micro-ondas", price: 375.00, desc: "", img: "https://plus.unsplash.com/premium_photo-1664302302302-3c46e206063e?w=500" },
+            { id: 9, name: "Robô Aspirador de Pó", price: 350.00, desc: "", img: "https://images.unsplash.com/photo-1589828156828-e4b786318239?w=500" },
+            { id: 10, name: "Liquidificador Turbo", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1570222094114-28a9d88a27e6?w=500" },
+            { id: 11, name: "Batedeira Planetária", price: 275.00, desc: "", img: "https://images.unsplash.com/photo-1594916323498-323b03b22b62?w=500" },
+            { id: 12, name: "Cafeteira Elétrica", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1517080314053-e546d148e658?w=500" },
+            { id: 13, name: "Sanduicheira e Grill", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1592398436589-94ae4a899933?w=500" }, // Panini grill
+            { id: 14, name: "Panela de Arroz Elétrica", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1632057790073-678c430e70ba?w=500" },
+            { id: 15, name: "Processador de Alimentos", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1585517263592-d9633273e971?w=500" },
+            { id: 16, name: "Ventilador de Coluna", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1618941716939-553df3c6c278?w=500" },
+            { id: 17, name: "Ferro de Passar a Vapor", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1549488497-276e23c2686d?w=500" },
+            { id: 18, name: "Mixer Turbo", price: 125.00, desc: "", img: "https://images.unsplash.com/photo-1609156543029-79a4c0032332?w=500" },
+            { id: 19, name: "Jogo de Panelas Antiaderente", price: 300.00, desc: "", img: "https://images.unsplash.com/photo-1584990347449-a64648a6e3d8?w=500" },
+            { id: 20, name: "Aparelho de Jantar 20 Peças", price: 250.00, desc: "", img: "https://images.unsplash.com/photo-1623652683935-77983636780c?w=500" },
+            { id: 21, name: "Jogo de Talheres Faqueiro", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1601342630312-d8434770d381?w=500" },
+            { id: 22, name: "Jogo de Travessas de Vidro", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1627483298606-35c91cf97f16?w=500" },
+            { id: 23, name: "Garrafa Térmica de Café", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1516216657908-01e958742540?w=500" },
+            { id: 24, name: "Escorredor de Louças Inox", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1596627685292-623c23932e8f?w=500" }, // Pia organizada
+            { id: 25, name: "Jogo de Copos (Água e Suco)", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500" },
+            { id: 26, name: "Tábua de Corte", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1594385208974-2e75f8d7bb48?w=500" },
+            { id: 27, name: "Petisqueira", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1576021182211-9ea8dced3690?w=500" },
+            { id: 28, name: "Edredom Casal Queen", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1522771753014-df00418c4e4f?w=500" },
+            { id: 29, name: "Jogo de Cama Queen 4 Peças", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500" },
+            { id: 30, name: "Jogo de Toalhas de Banho", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=500" },
+            { id: 31, name: "Kit Tapetes de Banheiro", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" },
+            { id: 32, name: "Jogo Cobre-leito Queen", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=500" },
+            { id: 33, name: "Cortina para Sala", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500" },
+            { id: 34, name: "TV LG 50 Polegadas", price: 1900.00, desc: "", img: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500" },
+            { id: 35, name: "TV LG 55 Polegadas", price: 2250.00, desc: "", img: "https://images.unsplash.com/photo-1552975084-6e027cd345c2?w=500" },
+            { id: 36, name: "Tapete para Sala", price: 125.00, desc: "", img: "https://images.unsplash.com/photo-1575414003591-ece8d0416c7a?w=500" },
+            { id: 37, name: "Kit 4 Travesseiros", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e6?w=500" },
+            { id: 38, name: "Manta para Sofá", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1580301762395-5c2f849495dd?w=500" },
+            { id: 39, name: "Toalha de Mesa de Jantar", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=500" },
+            { id: 40, name: "Jogo Americano (4 lugares)", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=500" },
+            { id: 41, name: "Kit Tapetes de Banheiro (Luxo)", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=500" },
+            { id: 42, name: "Protetor de Colchão Queen", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1631049552240-59c37f7e8c18?w=500" },
+            { id: 43, name: "Jogo de Lençol Queen 100% Algodão", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?w=500" },
+            { id: 44, name: "Cesto de Roupa Suja", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500" },
+            { id: 45, name: "Kit de Banheiro (Porta Sabonete)", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" },
+            { id: 46, name: "Tapete para Cozinha", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1621891380621-e03c26569148?w=500" },
+            { id: 47, name: "Kit de Potes Plástico", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=500" },
+            { id: 48, name: "Kit de Potes Herméticos", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1517135388049-266854728cc5?w=500" },
+            { id: 49, name: "Forma de Bolo", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1585827552668-d0728b355e3d?w=500" },
+            { id: 50, name: "Forma de Pizza", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500" },
+            { id: 51, name: "Kit Toalhas de Rosto", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1582234033242-d33a693cb4a0?w=500" },
+            { id: 52, name: "Espelho de Mesa com LED", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1618218168350-6e7c81152b63?w=500" },
+            { id: 53, name: "Organizador de Maquiagem Acrílico", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1596462502278-27bfdd403348?w=500" }
         ],
         cart: [],
         navigationHistory: ['home-view'],
         
-        // LINKS DO MERCADO PAGO ATUALIZADOS
+        // TODOS OS LINKS DO MERCADO PAGO ATUALIZADOS
         paymentLinks: {
-            25: 'https://mpago.la/2w5zi17',
-            50: 'https://mpago.la/2MyrTy2',
-            75: 'https://mpago.la/1kik68Z',
-            100: 'https://mpago.la/2K7R911',
-            125: 'https://mpago.la/2K12dqW',
-            150: 'https://mpago.la/2ZJqy7h',
-            175: 'https://mpago.la/2Nryg5U',
-            200: 'https://mpago.la/1t3X32X',
-            250: 'https://mpago.la/1hCDt19',
-            300: 'https://mpago.la/2Pzhsqq'
+            25: 'https://mpago.la/2Hg9d8v',
+            50: 'https://mpago.la/341NQTu',
+            75: 'https://mpago.la/2FcAZee',
+            100: 'https://mpago.la/2Pq7btc',
+            125: 'https://mpago.la/24v1qK1',
+            150: 'https://mpago.la/1LjW6id',
+            175: 'https://mpago.la/2YEg2ym',
+            200: 'https://mpago.la/13A6QaY',
+            225: 'https://mpago.la/17ta7Cz',
+            250: 'https://mpago.la/2cRstrz',
+            275: 'https://mpago.la/1ttibUr',
+            300: 'https://mpago.la/1cf985m',
+            325: 'https://mpago.la/27wtaR9',
+            350: 'https://mpago.la/1pkgzwn',
+            375: 'https://mpago.la/1e4xCWg',
+            400: 'https://mpago.la/1e4xCWg', // Nota: Link duplicado de 375 conforme seu prompt, ok
+            425: 'https://mpago.la/1jgm695',
+            450: 'https://mpago.la/17YUx9H',
+            475: 'https://mpago.la/2yJiTYi',
+            500: 'https://mpago.la/1DMPCMm',
+            525: 'https://mpago.la/1GTZQE9',
+            550: 'https://mpago.la/2FSWjt8',
+            575: 'https://mpago.la/2vnQ7Kx',
+            600: 'https://mpago.la/1dJ1Xwh',
+            700: 'https://mpago.la/1teWGHz',
+            800: 'https://mpago.la/2a7kEjW',
+            900: 'https://mpago.la/2ceSMo4',
+            1000: 'https://mpago.la/2wsdLyf',
+            1500: 'https://mpago.la/1qmSq7C',
+            1900: 'https://mpago.la/2kSQPZZ',
+            2000: 'https://mpago.la/1irSayQ',
+            2250: 'https://mpago.la/1DCHGKa'
         },
-        // Dados para renderizar os botões na tela de Pix/Cartão Direto
-        cardValues: [25, 50, 75, 100, 125, 150, 175, 200, 250, 300]
+        // Link de fallback para valores não listados
+        fallbackLink: 'https://link.mercadopago.com.br/inaciomaria',
+
+        // Valores para exibir botões nas telas manuais (Seleção até 500, o resto é auto no checkout)
+        cardValues: [25, 50, 75, 100, 150, 200, 250, 300, 400, 500]
     },
 
     init() {
@@ -211,13 +282,13 @@ const app = {
     // --- Checkout ---
     submitCheckoutForm(e) {
         e.preventDefault();
-        // Simulação de captura dos dados (futuro backend)
         const guestData = {
             name: document.getElementById('guest-name').value,
             phone: document.getElementById('guest-phone').value,
             message: document.getElementById('guest-message').value
         };
         console.log("Dados do convidado:", guestData);
+        // Futura integração com Google Sheets aqui
         this.navigateTo('payment-selection-view');
     },
 
@@ -230,16 +301,16 @@ const app = {
             btnCard.innerText = `Pagar R$ ${total.toFixed(2).replace('.', ',')} com Cartão`;
         }
         
-        // Verifica se existe link exato, senão mostra fallback
+        // Verifica link exato
         const link = this.findBestPaymentLink(total);
         const fallbackContainer = document.getElementById('fallback-card-links');
         
-        if (!link && fallbackContainer) {
-            fallbackContainer.classList.remove('hidden');
-            btnCard.style.display = 'none'; // Esconde botão principal se não tem link
-        } else if (fallbackContainer) {
-            fallbackContainer.classList.add('hidden');
-            btnCard.style.display = 'flex';
+        // Se NÃO tem link exato, mudamos o texto e comportamento do botão
+        if (!link) {
+            btnCard.innerText = `Pagar R$ ${total.toFixed(2).replace('.', ',')} (Digitar Valor)`;
+            if(fallbackContainer) fallbackContainer.classList.remove('hidden');
+        } else {
+            if(fallbackContainer) fallbackContainer.classList.add('hidden');
         }
     },
 
@@ -263,20 +334,19 @@ const app = {
         }
     },
 
-    // --- LOGICA DE PAGAMENTO CARTÃO ---
+    // --- LOGICA DE PAGAMENTO CARTÃO (UPDATED) ---
     payWithCardCheckout() {
         const total = this.data.cart.reduce((acc, item) => acc + item.price, 0);
         const link = this.findBestPaymentLink(total);
 
-        if (link) {
-            window.open(link, '_blank');
-            // Vai para a tela de agradecimento após clicar
-            setTimeout(() => {
-                this.navigateTo('thank-you-view');
-            }, 1000);
-        } else {
-            alert("Para este valor específico, por favor utilize os botões de valores aproximados abaixo.");
-        }
+        // Se encontrou link exato, usa ele. Se não, usa o fallback genérico
+        const finalLink = link ? link : this.data.fallbackLink;
+
+        window.open(finalLink, '_blank');
+        
+        setTimeout(() => {
+            this.navigateTo('thank-you-view');
+        }, 1500);
     },
     
     findBestPaymentLink(amount) {
@@ -310,19 +380,17 @@ const app = {
 
     manualCardPay(val) {
         const link = this.findBestPaymentLink(val);
-        if(link) {
-            window.open(link, '_blank');
-            setTimeout(() => {
-                this.navigateTo('thank-you-view');
-            }, 500);
-        } else {
-            alert("Link indisponível no momento.");
-        }
+        // Se clicou num botão manual, DEVE ter link. Se não tiver, usa fallback.
+        const finalLink = link ? link : this.data.fallbackLink;
+        
+        window.open(finalLink, '_blank');
+        setTimeout(() => {
+            this.navigateTo('thank-you-view');
+        }, 500);
     },
 
     // --- Pix ---
     copyPix(elementId) {
-        // Nova Chave do Usuário
         let text = "14c6c43c-3ea9-4be4-bdfa-f150e192f726"; 
 
         navigator.clipboard.writeText(text).then(() => {
@@ -331,7 +399,6 @@ const app = {
                  this.navigateTo('thank-you-view');
             }
         }).catch(err => {
-            // Fallback simples
             const textArea = document.createElement("textarea");
             textArea.value = text;
             document.body.appendChild(textArea);
