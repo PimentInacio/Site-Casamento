@@ -8,3 +8,9 @@ Botão home:
 - Lista de Presentes Casas Bahia
 - Lista de Presentes Nossa
 - WhatsApp
+
+
+
+FALTA FAZER
+-Corrigir Link de pagamento cartão (talvez usar opção html no lugar do link, ai usa o htmp do botão pagar fornecido pelo Mercado Pago)
+-Integra com sheets (app para databese usando as planilhas da google criar e conectar planilha)
