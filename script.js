@@ -1,7 +1,6 @@
 const app = {
     // Dados
     data: {
-        // PREÇOS AJUSTADOS PARA BATEREM COM OS LINKS (25, 50, 75...)
         products: [
             { id: 1, name: "Liquidificador Turbo 1200w", price: 150.00, desc: "Para nossas vitaminas e receitas especiais.", img: "https://images.unsplash.com/photo-1570222094114-28a9d88a27e6?auto=format&fit=crop&w=500&q=60" },
             { id: 2, name: "Jogo de Toalhas Banho", price: 100.00, desc: "Maciez e conforto para o nosso novo lar.", img: "https://images.unsplash.com/photo-1616627547584-bf28cee262db?auto=format&fit=crop&w=500&q=60" },
@@ -14,28 +13,28 @@ const app = {
         ],
         cart: [],
         navigationHistory: ['home-view'],
-        // ESTRUTURA PARA RECEBER SEUS LINKS
-        // Preencha as aspas vazias '' com os links do Mercado Pago que você vai gerar
+        
+        // LINKS DO MERCADO PAGO ATUALIZADOS
         paymentLinks: {
-            25: '',
-            50: '',
-            75: '',
-            100: '',
-            125: '',
-            150: '',
-            175: '',
-            200: '',
-            250: '',
-            300: '',
-            350: '', // Exemplo extra
-            400: '', // Exemplo extra
-            500: ''  // Exemplo extra
-        }
+            25: 'https://mpago.la/2w5zi17',
+            50: 'https://mpago.la/2MyrTy2',
+            75: 'https://mpago.la/1kik68Z',
+            100: 'https://mpago.la/2K7R911',
+            125: 'https://mpago.la/2K12dqW',
+            150: 'https://mpago.la/2ZJqy7h',
+            175: 'https://mpago.la/2Nryg5U',
+            200: 'https://mpago.la/1t3X32X',
+            250: 'https://mpago.la/1hCDt19',
+            300: 'https://mpago.la/2Pzhsqq'
+        },
+        // Dados para renderizar os botões na tela de Pix/Cartão Direto
+        cardValues: [25, 50, 75, 100, 125, 150, 175, 200, 250, 300]
     },
 
     init() {
         this.renderProducts();
-        this.generateDirectCardLinks(); // Apenas para a página de Pix Direto
+        this.generateDirectCardLinks(); 
+        this.generateCheckoutCardLinks();
     },
 
     // --- Navegação SPA ---
@@ -212,13 +211,13 @@ const app = {
     // --- Checkout ---
     submitCheckoutForm(e) {
         e.preventDefault();
+        // Simulação de captura dos dados (futuro backend)
         const guestData = {
             name: document.getElementById('guest-name').value,
             phone: document.getElementById('guest-phone').value,
             message: document.getElementById('guest-message').value
         };
         console.log("Dados do convidado:", guestData);
-        // Aqui você integrará com a planilha no futuro
         this.navigateTo('payment-selection-view');
     },
 
@@ -226,10 +225,21 @@ const app = {
         const total = this.data.cart.reduce((acc, item) => acc + item.price, 0);
         document.getElementById('payment-total').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
         
-        // Atualiza texto do botão do cartão dinamicamente
         const btnCard = document.getElementById('btn-pay-card-checkout');
         if(btnCard) {
             btnCard.innerText = `Pagar R$ ${total.toFixed(2).replace('.', ',')} com Cartão`;
+        }
+        
+        // Verifica se existe link exato, senão mostra fallback
+        const link = this.findBestPaymentLink(total);
+        const fallbackContainer = document.getElementById('fallback-card-links');
+        
+        if (!link && fallbackContainer) {
+            fallbackContainer.classList.remove('hidden');
+            btnCard.style.display = 'none'; // Esconde botão principal se não tem link
+        } else if (fallbackContainer) {
+            fallbackContainer.classList.add('hidden');
+            btnCard.style.display = 'flex';
         }
     },
 
@@ -244,7 +254,6 @@ const app = {
         const options = document.querySelectorAll(`#${wrapperId} .payment-option`);
         options.forEach(opt => opt.classList.remove('selected'));
         
-        // Simulação visual de seleção (na prática, o clique ativa)
         if (type === 'pix') {
             pixContent.classList.remove('hidden');
             cardContent.classList.add('hidden');
@@ -254,44 +263,49 @@ const app = {
         }
     },
 
-    // --- LOGICA AUTOMÁTICA DE CARTÃO ---
+    // --- LOGICA DE PAGAMENTO CARTÃO ---
     payWithCardCheckout() {
         const total = this.data.cart.reduce((acc, item) => acc + item.price, 0);
         const link = this.findBestPaymentLink(total);
 
         if (link) {
             window.open(link, '_blank');
+            // Vai para a tela de agradecimento após clicar
             setTimeout(() => {
                 this.navigateTo('thank-you-view');
             }, 1000);
         } else {
-            alert("Desculpe, não encontramos um link exato para este valor total. Por favor, ajuste o carrinho ou use o PIX.");
+            alert("Para este valor específico, por favor utilize os botões de valores aproximados abaixo.");
         }
     },
     
-    // Função auxiliar para achar o link (ou o mais próximo, se desejar)
     findBestPaymentLink(amount) {
-        // Tenta achar o valor exato
         if (this.data.paymentLinks[amount]) {
             return this.data.paymentLinks[amount];
         }
-        
-        // Se não achar exato, você pode optar por bloquear ou achar o mais próximo.
-        // Como você disse que os valores serão obrigatórios, vou assumir correspondência exata.
-        // Caso queira lógica de "mais próximo", me avise.
         return null; 
     },
 
-    // Apenas para a página "Pix Direto" onde a pessoa escolhe o valor
     generateDirectCardLinks() {
         const container = document.getElementById('direct-card-links');
         if(!container) return;
         
-        const values = [25, 50, 75, 100, 150, 200, 300]; // Valores para escolha manual rápida
-        
-        container.innerHTML = values.map(val => `
+        const html = this.data.cardValues.map(val => `
             <a href="#" class="card-link-btn" onclick="app.manualCardPay(${val})">R$ ${val}</a>
         `).join('');
+
+        container.innerHTML = html;
+    },
+    
+    generateCheckoutCardLinks() {
+        const container = document.getElementById('checkout-card-links');
+        if(!container) return;
+        
+        const html = this.data.cardValues.map(val => `
+            <a href="#" class="card-link-btn" onclick="app.manualCardPay(${val})">R$ ${val}</a>
+        `).join('');
+
+        container.innerHTML = html;
     },
 
     manualCardPay(val) {
@@ -308,14 +322,23 @@ const app = {
 
     // --- Pix ---
     copyPix(elementId) {
-        const text = document.getElementById(elementId).innerText.trim();
+        // Nova Chave do Usuário
+        let text = "14c6c43c-3ea9-4be4-bdfa-f150e192f726"; 
+
         navigator.clipboard.writeText(text).then(() => {
             alert("Chave Pix copiada!");
             if(elementId === 'pix-key-direct-val') {
                  this.navigateTo('thank-you-view');
             }
         }).catch(err => {
-            alert("Erro ao copiar. Selecione manualmente.");
+            // Fallback simples
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+            alert("Chave Pix copiada!");
         });
     },
 

@@ -69,7 +69,7 @@
             </div>
             <div id="direct-pix-content" class="hidden card animate-fade">
                 <p class="sm-text mb-1">Use a chave abaixo no app do seu banco:</p>
-                <div class="pix-key-box" id="pix-key-direct-val">pix@inacioemaria.com.br</div>
+                <div class="pix-key-box" id="pix-key-direct-val">14c6c43c-3ea9-4be4-bdfa-f150e192f726</div>
                 <button class="btn btn-success" onclick="app.copyPix('pix-key-direct-val')">
                     <i class="fas fa-copy"></i> Copiar Chave Pix
                 </button>
@@ -84,7 +84,8 @@
             </div>
             <div id="direct-card-content" class="hidden card animate-fade">
                 <p class="sm-text mb-1"><i class="fas fa-info-circle text-primary"></i> Escolha um valor de carinho:</p>
-                <div class="card-links-grid" id="direct-card-links"></div>
+                <div class="card-links-grid" id="direct-card-links">
+                    </div>
                 <p class="xs-text mt-1">Pagamento seguro via Mercado Pago.</p>
             </div>
         </section>
@@ -159,7 +160,7 @@
             </div>
             <div id="payment-pix-content" class="hidden card animate-fade">
                 <p class="sm-text mb-1">Chave Pix Copia e Cola:</p>
-                <div class="pix-key-box" id="pix-key-checkout">00020126360014BR.GOV.BCB.PIX0114+55329999999995204000053039865802BR5925Inacio e Maria de Fatima6009SAO PAULO62070503***6304ABCD</div>
+                <div class="pix-key-box" id="pix-key-checkout">14c6c43c-3ea9-4be4-bdfa-f150e192f726</div>
                 <button class="btn btn-success" onclick="app.confirmPixPayment()">
                     <i class="fas fa-copy"></i> Copiar e Confirmar
                 </button>
@@ -177,6 +178,12 @@
                 <button id="btn-pay-card-checkout" class="btn btn-primary" onclick="app.payWithCardCheckout()">
                     Pagar R$ 0,00 com Cartão
                 </button>
+                
+                <div id="fallback-card-links" class="hidden mt-3">
+                    <p class="xs-text text-red">Não há link exato para este valor. Selecione um valor aproximado:</p>
+                    <div class="card-links-grid" id="checkout-card-links"></div>
+                </div>
+
                 <p class="xs-text mt-1">Redirecionamento seguro para Mercado Pago.</p>
             </div>
         </section>
