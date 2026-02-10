@@ -31,7 +31,7 @@
                 <div class="hero-icon"><i class="fas fa-gift"></i></div>
                 <p class="overline">Casamento Oficial</p>
                 <h2 class="couple-names">Inácio & Maria de Fátima</h2>
-                <p class="welcome-text">Sejam bem-vindos! Criamos este site com muito carinho para que você viva esse dia especial com a gente!</p>
+                <p class="welcome-text">Sejam bem-vindos! Criamos este site com muito carinho para que você viva esse dia especial com a gente! Abaixo você encontra o link de confirmação de presença. Você também encontra aqui nossa lista de presentes. Lembre-se que sua presença é nosso maior presente!!</p>
                 
                 <div class="action-grid">
                     <a href="https://forms.gle/F5hS4GznLcqga678A" target="_blank" class="btn btn-primary">
@@ -40,60 +40,15 @@
                     <button class="btn btn-outline" onclick="app.navigateTo('product-list-view')">
                         <i class="fas fa-list-ul"></i> Lista de Presentes (Noivos)
                     </button>
-                    <a href="https://LISTAS.CASASBAHIA.COM.BR/MARIAEINACIO" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-store"></i> Lista Casas Bahia
-                    </a>
-                    <button class="btn btn-outline" onclick="app.navigateTo('pix-direct-view')">
-                        <i class="fa-brands fa-pix"></i> Chave Pix dos Noivos
-                    </button>
                 </div>
             </div>
-            <p class="footer-credit">Feito com <i class="fas fa-heart text-red"></i> pelos noivos</p>
-        </section>
-
-        <section id="pix-direct-view" class="view">
-            <div class="card">
-                <div class="hero-icon icon-red"><i class="fas fa-heart"></i></div>
-                <h3>Presenteie com Amor</h3>
-                <p class="welcome-text">Sua presença é o maior presente! Mas caso deseje nos abençoar, ficaremos gratos.</p>
-            </div>
-
-            <p class="section-label">Escolha como deseja presentear:</p>
-
-            <div class="payment-option" onclick="app.togglePayment('pix', 'direct')">
-                <div class="flex-center gap-10">
-                    <i class="fa-brands fa-pix text-green icon-lg"></i>
-                    <span class="bold">PIX (Recomendado)</span>
-                </div>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div id="direct-pix-content" class="hidden card animate-fade">
-                <p class="sm-text mb-1">Use a chave abaixo no app do seu banco:</p>
-                <div class="pix-key-box" id="pix-key-direct-val">14c6c43c-3ea9-4be4-bdfa-f150e192f726</div>
-                <button class="btn btn-success" onclick="app.copyPix('pix-key-direct-val')">
-                    <i class="fas fa-copy"></i> Copiar Chave Pix
-                </button>
-            </div>
-
-            <div class="payment-option" onclick="app.togglePayment('card', 'direct')">
-                <div class="flex-center gap-10">
-                    <i class="fas fa-credit-card text-primary icon-lg"></i>
-                    <span class="bold">Cartão de Crédito</span>
-                </div>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div id="direct-card-content" class="hidden card animate-fade">
-                <p class="sm-text mb-1"><i class="fas fa-info-circle text-primary"></i> Escolha um valor de carinho:</p>
-                <div class="card-links-grid" id="direct-card-links">
-                    </div>
-                <p class="xs-text mt-1">Pagamento seguro via Mercado Pago.</p>
-            </div>
+            <p class="footer-credit">Feito com amor pelos noivos Inácio e Maria de Fátima! </p>
         </section>
 
         <section id="product-list-view" class="view">
             <div class="products-header">
                 <h3>Itens Disponíveis</h3>
-                <span>Ordenado por: Destaque</span>
+                <span>Ordenado por: Preço (Menor > Maior)</span>
             </div>
             <div class="product-grid" id="product-grid">
                 </div>
