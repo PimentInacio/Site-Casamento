@@ -4,21 +4,21 @@ const app = {
         // LISTA DE PRODUTOS REORDENADA (MENOR PREÇO -> MAIOR PREÇO)
         products: [
             // R$ 25,00
-            { id: 25, name: "Jogo de Copos (Água e Suco)", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500" },
-            { id: 26, name: "Tábua de Corte", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1594385208974-2e75f8d7bb48?w=500" },
-            { id: 44, name: "Cesto de Roupa Suja", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500" },
-            { id: 47, name: "Kit de Potes Plástico", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=500" },
-            { id: 49, name: "Forma de Bolo", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1585827552668-d0728b355e3d?w=500" },
-            { id: 50, name: "Forma de Pizza", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500" },
-            { id: 51, name: "Kit Toalhas de Rosto", price: 25.00, desc: "", img: "https://images.unsplash.com/photo-1582234033242-d33a693cb4a0?w=500" },
+            { id: 25, name: "Jogo de Copos", price: 25.00, desc: "", img: "https://cdn.awsli.com.br/600x450/2512/2512579/produto/184164821f6b2ff1ece.jpg" },
+            { id: 26, name: "Tábua de Corte", price: 25.00, desc: "", img: "https://m.media-amazon.com/images/I/61hBmWQmHqL._AC_UF894,1000_QL80_.jpg" },
+            { id: 44, name: "Cesto de Roupa Suja", price: 25.00, desc: "", img: "https://casaamarella.com.br/cdn/shop/products/Sf36ed3c3534f4046981a22b29f0afd3bH.jpg?v=1690830403&width=2048" },
+            { id: 47, name: "Kit de Potes Plástico", price: 25.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSBX6slsbj0duxXEJF_RucT-WYnRdkMj3AGw&s" },
+            { id: 49, name: "Forma de Bolo", price: 25.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSBX6slsbj0duxXEJF_RucT-WYnRdkMj3AGw&s" },
+            { id: 50, name: "Forma de Pizza", price: 25.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT6WDxpFTIG70XQv1iZUlnOHe4O6K2GfzmF7H8q2ZWO1VABmONvRQcyULqIpuj2dLaTOOQllDe6ZBTtEqfudbphVhBFwtGdwvfYNV3oU-JPNP2rI7oiQJq4PAMGEhHR9M93KcO1iVWU9g&usqp=CAc" },
+            { id: 51, name: "Jarra de Suco", price: 25.00, desc: "", img: "data:image/jpeg;base64,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" },
 
             // R$ 50,00
-            { id: 27, name: "Petisqueira", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1576021182211-9ea8dced3690?w=500" },
-            { id: 31, name: "Kit Tapetes de Banheiro", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" },
-            { id: 39, name: "Toalha de Mesa de Jantar", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=500" },
-            { id: 40, name: "Jogo Americano (4 lugares)", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=500" },
-            { id: 45, name: "Kit de Banheiro (Porta Sabonete)", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" },
-            { id: 46, name: "Tapete para Cozinha", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1621891380621-e03c26569148?w=500" },
+            { id: 27, name: "Petisqueira de Bambu", price: 50.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQrGjbfgRSQ81k4mfIGSHq_5CmLV2PanAJ84dcaar6gKSZ4U35V9v9e6PCxuhIE8LuZCcVaqBszZWvWsCn6Y0AiZdlug7EQgqK58ztPpvUX6yr-ovwqjP1bBV5TCNSSxsggO_SqIo_8Tg&usqp=CAc" },
+            { id: 31, name: "Jogo de Tapetes Banheiro", price: 50.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTUowkPEoFk4NNBmYCRVC2mU5Vod8w5-8DtYr-orI1Rw-rafg3vl0E5jcHW-ul9XTnTL_NNJPkINjquoNh9SLE4X8jb3qq2ZBzn7HPqqUT_kZT_R0tPIl06qvlgCSUo9RaCWH2mTVjO2Q&usqp=CAc" },
+            { id: 39, name: "Toalha de Mesa de Jantar (4 lugares)", price: 50.00, desc: "", img: "https://m.media-amazon.com/images/I/714wTJo9U7L._AC_UF894,1000_QL80_.jpg" },
+            { id: 40, name: "Kit Passadeira Cozinha", price: 50.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSYugFhyNp47L4be9ortQKDkhbYeZyCJ43xaJa3X3_Ti5hC7l3el6h6SOTkgnLwvoazQ3iTziNYTj89vKLuljwOispJq3eU1b6hHe_l0pH3n6YZ_uuEcUSrXCQBsjrUtLZ3iTBhNaijOaQ&usqp=CAc" },
+            { id: 45, name: "Kit Xícaras", price: 50.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSYugFhyNp47L4be9ortQKDkhbYeZyCJ43xaJa3X3_Ti5hC7l3el6h6SOTkgnLwvoazQ3iTziNYTj89vKLuljwOispJq3eU1b6hHe_l0pH3n6YZ_uuEcUSrXCQBsjrUtLZ3iTBhNaijOaQ&usqp=CAc" },
+            { id: 46, name: "Kit de Pratos", price: 50.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9SuSZ__SI11-4PcnhFEelk1JRNHBrCTyso9cAXlvBhiaDWbtGWMZlVpPfyntv1TbUq-P-VMXXkoOPrfcBfsTlOuKytNeyHm6Xh_50keqFkXKUIIyOD8ST8zxtCEqw3Hd2wn99GQ&usqp=CAc" },
             { id: 52, name: "Espelho de Mesa com LED", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1618218168350-6e7c81152b63?w=500" },
             { id: 53, name: "Organizador de Maquiagem Acrílico", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1596462502278-27bfdd403348?w=500" },
 
@@ -43,6 +43,8 @@ const app = {
             { id: 18, name: "Mixer Turbo", price: 125.00, desc: "", img: "https://images.unsplash.com/photo-1609156543029-79a4c0032332?w=500" },
             { id: 36, name: "Tapete para Sala", price: 125.00, desc: "", img: "https://images.unsplash.com/photo-1575414003591-ece8d0416c7a?w=500" },
 
+            { id: 5, name: "Vara de Pesca pro NOIVO", price: 125.00, desc: "", img: "https://http2.mlstatic.com/D_NQ_NP_2X_867593-MLB93231018614_092025-F-kit-pesca-molinete-marine-sports-arena-4000-vara-linha.webp" },
+           
             // R$ 150,00
             { id: 1, name: "Chapinha", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1562362336-659635038e94?w=500" },
             { id: 6, name: "Maleta de Ferramentas Completa", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=500" },
@@ -55,38 +57,46 @@ const app = {
             { id: 14, name: "Panela de Arroz Elétrica", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1632057790073-678c430e70ba?w=500" },
             { id: 16, name: "Ventilador de Coluna", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1618941716939-553df3c6c278?w=500" },
             { id: 43, name: "Jogo de Lençol Queen 100% Algodão", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?w=500" },
-
+            { id: 3, name: "Panela de Arroz Elétrica", price: 175.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTIjs2k1Zcz-Ts0GyJW4JGXcLj0Zh2_VttWmGy4Lc0f2384uZjXh5m3FTq2Ygib7yR93L19gsBWt4xFCPcdpGZ06S8qL2lS_3tAEGTaBzd3XlnFAjlnKqc9aqaW82-f9HRdJOirNw&usqp=CAc" },
+           
             // R$ 200,00
             { id: 2, name: "Secador de Cabelo", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500" },
             { id: 15, name: "Processador de Alimentos", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1585517263592-d9633273e971?w=500" },
             { id: 28, name: "Edredom Casal Queen", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1522771753014-df00418c4e4f?w=500" },
 
-            // R$ 225,00
-            { id: 5, name: "Furadeira", price: 225.00, desc: "", img: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=500" },
+            
+            
 
             // R$ 250,00
-            { id: 3, name: "Escova Secadora Modeladora", price: 250.00, desc: "", img: "https://images.unsplash.com/photo-1595992367809-28c009d6c40f?w=500" },
-            { id: 20, name: "Aparelho de Jantar 20 Peças", price: 250.00, desc: "", img: "https://images.unsplash.com/photo-1623652683935-77983636780c?w=500" },
+            { id: 20, name: "Aparelho de Jantar 20 Peças", price: 250.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR88xHEnnl27YdU2l5pQ3tAHXcPAVkhRnLT8jgkEzQvMK8o2vkPHDDhpepMVq1vlpuefowXE55uxDgZYi-uWCoWIth98_TpX2IZ28s58FsYjyTKiAzWyHkJwM5TMUYcx5jMoQ-RRg7C4w&usqp=CAc" },
 
             // R$ 275,00
-            { id: 4, name: "Panela de Pressão Elétrica", price: 275.00, desc: "", img: "https://images.unsplash.com/photo-1544229983-936cb7d727eb?w=500" },
-            { id: 11, name: "Batedeira Planetária", price: 275.00, desc: "", img: "https://images.unsplash.com/photo-1594916323498-323b03b22b62?w=500" },
+            
+            { id: 11, name: "Batedeira", price: 275.00, desc: "", img: "https://a-static.mlcdn.com.br/450pxx450px/batedeira-planetaria-mondial-preto-e-inox-700w-premium-12-velocidades/magazineluiza/021259300/5b77fd2ae51a9a994f09452833c0ca87.jpg" },
 
             // R$ 300,00
-            { id: 7, name: "Airfryer", price: 300.00, desc: "", img: "https://images.unsplash.com/photo-1626139576127-6c0784177b90?w=500" },
-            { id: 19, name: "Jogo de Panelas Antiaderente", price: 300.00, desc: "", img: "https://images.unsplash.com/photo-1584990347449-a64648a6e3d8?w=500" },
+            { id: 7, name: "Airfryer", price: 300.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR9-TrMAt3oRvZsBioIJoWuiHLrK-gLRBzRj2xKABpY-YxnEMuZc2DMNcGSAhMnDZ7SX1uazpWAMzgN9FcU75ZdiS8tHC7YBa6LbkXSuv0AuuHbUbHCTFODFddGaMxKeK6ywlJL3hr8R1w&usqp=CAc" },
+            { id: 19, name: "Jogo de Panelas Antiaderente", price: 400.00, desc: "", img: "https://images.tcdn.com.br/img/img_prod/487343/jogo_4_panelas_studio_cook_marmol_pj4umm_9453_mimo_style_5409_2_a02b7ec2c1af04a1a1d88d591b2d334e_20251006122129.jpg" },
 
-            // R$ 350,00
-            { id: 9, name: "Robô Aspirador de Pó", price: 350.00, desc: "", img: "https://images.unsplash.com/photo-1589828156828-e4b786318239?w=500" },
+            
+            
 
             // R$ 375,00
-            { id: 8, name: "Micro-ondas", price: 375.00, desc: "", img: "https://plus.unsplash.com/premium_photo-1664302302302-3c46e206063e?w=500" },
+            { id: 8, name: "Micro-ondas", price: 450.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRy2m719TBwGQCLVc1Y_l3Edb8Hnbe4vx7cED_ddYMw1HhEfpfzQzpHAV928DR4vzX0j-2kufPz4AR3DUFbbV92eRuZs4s_MbTS82goGAwD56XMFWlPDMT-aI_GuyeuJGKaQrXDOw&usqp=CAc" },
 
-            // R$ 1.900,00
-            { id: 34, name: "TV LG 50 Polegadas", price: 1900.00, desc: "", img: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500" },
+            // R$ 450,00
+            { id: 34, name: "Box Cama Queen", price: 450.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRBZz0xKalHxHnwa_FVMp30_y5Vzc-wMT7zCRpDERoG3p5ddbirDDVLSch66ADW6lPmDmXDJTUQHLpzCw4xU3bjXLvBfggUjm-Pt4HCkmKQRZIXJMED54YkQjvu-8XE95PxZmhqX0mz1g&usqp=CAc" },
+            { id: 4, name: "Panela de Pressão Elétrica", price: 475.00, desc: "", img: "https://s2-techtudo.glbimg.com/9wocZb0Ms_PfZJ5E6-ZpIrSurWs=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2025/6/G/Ump8zIQW2S47uIsCQXHg/a-internet-foi-atacada-em-todo-o-mundo-causando-uma-grande-interrupcao.-foto-premium-3-.jpg" },
+            { id: 103, name: "Cômoda Casal", price: 575.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTdtMmjqgr8alu-eLWdwrdzWJ8xHHZJhqPEvGz0qVK1OKBCWqIxvvTIvAMREqkXI6RF31q8T0TZDHbemdEX048pGQC6SowKUw&usqp=CAc" },
+            
+            { id: 9, name: "Robô Aspirador de Pó", price: 600.00, desc: "", img: "https://m.media-amazon.com/images/I/71S4aaJ2T9L.jpg" },
+
+            { id: 101, name: "Soundbar", price: 900.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRy2m719TBwGQCLVc1Y_l3Edb8Hnbe4vx7cED_ddYMw1HhEfpfzQzpHAV928DR4vzX0j-2kufPz4AR3DUFbbV92eRuZs4s_MbTS82goGAwD56XMFWlPDMT-aI_GuyeuJGKaQrXDOw&usqp=CAc" },
+            { id: 102, name: "Guarda Roupas Casal", price: 1000.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRbaOo6zKm-awedA1t6mF9xjpdyMEpgQ-W_eeUAV8s9Vm-4I9st0QQCBWbBSYnyhyRPEzFGDimC9EhpfZ9zileHPk8cbqtY&usqp=CAc" },
+
 
             // R$ 2.250,00
-            { id: 35, name: "TV LG 55 Polegadas", price: 2250.00, desc: "", img: "https://images.unsplash.com/photo-1552975084-6e027cd345c2?w=500" }
+            { id: 35, name: "TV LG", price: 2250.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwC6Z8UImswciDYhbL20Bd9HqeCQ_kc-Vd4Q&s" }
         ],
         cart: [],
         navigationHistory: ['home-view'],
