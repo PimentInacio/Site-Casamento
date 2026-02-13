@@ -214,6 +214,7 @@ const app = {
         const modalBody = document.getElementById('modal-body');
         const modal = document.getElementById('product-modal');
 
+        // Removido o botão "Continuar Comprando" do HTML abaixo
         modalBody.innerHTML = `
             <img src="${prod.img}" class="modal-image" alt="${prod.name}">
             <div class="modal-details">
@@ -223,9 +224,6 @@ const app = {
                 
                 <button class="btn btn-red mb-1" onclick="app.addToCart(${prod.id})">
                     <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
-                </button>
-                <button class="btn btn-outline" onclick="app.closeModal(null, true)">
-                    Continuar Comprando
                 </button>
             </div>
         `;
