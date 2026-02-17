@@ -212,7 +212,7 @@ const app = {
                     <h4 class="product-name">${prod.name}</h4>
                     <div>
                         <div class="product-price">R$ ${prod.price.toFixed(2).replace('.', ',')}</div>
-                        <div class="product-installments">1x no cartão ou pix</div>
+                        <div class="product-installments">Cartão ou PIX</div>
                     </div>
                 </div>
             </div>
