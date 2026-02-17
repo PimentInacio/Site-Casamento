@@ -120,8 +120,15 @@
                 <button class="btn btn-outline" onclick="app.copyPix('pix-key-checkout')">
                     <i class="fas fa-copy"></i> Copiar Chave PIX
                 </button>
-                
-                <button class="btn btn-success" onclick="app.confirmPixPayment()">
+
+                <div class="alert-pix mt-3 mb-1">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Passo Final:</strong> Após pagar no app do seu banco, volte nesta tela e clique no botão verde para o seu presente ser registrado!
+                    </div>
+                </div>
+
+                <button class="btn btn-success mt-1" onclick="app.confirmPixPayment()">
                     <i class="fas fa-check-circle"></i> Já fiz o pagamento
                 </button>
             </div>
