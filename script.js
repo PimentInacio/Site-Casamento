@@ -19,8 +19,8 @@ const app = {
             { id: 40, name: "Kit Passadeira Cozinha", price: 50.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSYugFhyNp47L4be9ortQKDkhbYeZyCJ43xaJa3X3_Ti5hC7l3el6h6SOTkgnLwvoazQ3iTziNYTj89vKLuljwOispJq3eU1b6hHe_l0pH3n6YZ_uuEcUSrXCQBsjrUtLZ3iTBhNaijOaQ&usqp=CAc" },
             { id: 45, name: "Kit Xícaras", price: 50.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQa3aDexYV4M08aLVyFTDdjo4ns-TF5-ud0rz9CY7La8nfRfkXGfy3187L-OtcsugV3MHjCPQBAHwFZLZngvtzZVpnyDfaKnL-pIdaTh1MLAtb0lu8lfbBlUKbuTioDbLM9SwXTUB0&usqp=CAc" },
             { id: 46, name: "Kit de Pratos", price: 50.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ9SuSZ__SI11-4PcnhFEelk1JRNHBrCTyso9cAXlvBhiaDWbtGWMZlVpPfyntv1TbUq-P-VMXXkoOPrfcBfsTlOuKytNeyHm6Xh_50keqFkXKUIIyOD8ST8zxtCEqw3Hd2wn99GQ&usqp=CAc" },
-            { id: 52, name: "Espelho de Mesa com LED", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1618218168350-6e7c81152b63?w=500" },
-            { id: 53, name: "Organizador de Maquiagem Acrílico", price: 50.00, desc: "", img: "https://images.unsplash.com/photo-1596462502278-27bfdd403348?w=500" },
+            { id: 52, name: "Luminária de Quarto", price: 50.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ5x2vgT56U1WEp-aMLj2XZbxg8Cc8MlHwYxCc9lb78GpSGIofkNdK0CJlcpJoBTIl-p4Latr0B4Nm51MZYVV9PW3ISygSD&usqp=CAc" },
+           
 
             // R$ 75,00
             { id: 21, name: "Jogo de Talheres Faqueiro", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1601342630312-d8434770d381?w=500" },
