@@ -467,12 +467,15 @@ const app = {
     },
 
     confirmPixPayment() {
-        this.enviarParaN8n('PIX'); // <--- ENVIANDO PARA O N8N
+        this.enviarParaN8n('PIX'); // Envia os dados para a sua VPS
         
-        this.copyPix('pix-key-checkout');
+        // Removemos a linha "this.copyPix" daqui de dentro, 
+        // pois ela agora tem um botão só pra ela!
+
+        // Redireciona para a tela de agradecimento
         setTimeout(() => {
             this.navigateTo('thank-you-view');
-        }, 1000);
+        }, 800); // Dei uma leve diminuída no tempo de transição para ficar mais rápido
     },
 
     resetApp() {
