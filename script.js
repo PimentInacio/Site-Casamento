@@ -372,8 +372,39 @@ const app = {
         }
     },
 
+    async enviarParaN8n(metodoPagamento) {
+        // Sua URL de produção do n8n
+        const webhookUrl = 'https://acutis-system-n8n.ntlmpr.easypanel.host/webhook/receber-presente'; 
+
+        const itensComprados = this.data.cart.map(item => item.name).join(', ');
+        const valorTotal = this.data.cart.reduce((acc, item) => acc + item.price, 0);
+        
+        // Coleta os dados que o usuário digitou na tela de identificação
+        const payload = {
+            nome_convidado: document.getElementById('guest-name').value || 'Não informado',
+            whatsapp: document.getElementById('guest-phone').value || 'Não informado',
+            mensagem: document.getElementById('guest-message').value || '',
+            itens_comprados: itensComprados,
+            valor_total: valorTotal,
+            metodo_pagamento: metodoPagamento
+        };
+
+        try {
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            console.log("Dados enviados para o n8n com sucesso!");
+        } catch (error) {
+            console.error("Erro ao enviar para o n8n:", error);
+        }
+    },
+
     // --- LOGICA DE PAGAMENTO CARTÃO ---
     payWithCardCheckout() {
+        this.enviarParaN8n('Cartão de Crédito'); // <--- ENVIANDO PARA O N8N
+        
         const total = this.data.cart.reduce((acc, item) => acc + item.price, 0);
         const link = this.findBestPaymentLink(total);
 
@@ -406,6 +437,8 @@ const app = {
     },
 
     manualCardPay(val) {
+        this.enviarParaN8n('Cartão de Crédito'); // <--- ENVIANDO PARA O N8N
+        
         const link = this.findBestPaymentLink(val);
         // Se clicou num botão manual, DEVE ter link. Se não tiver, usa fallback.
         const finalLink = link ? link : this.data.fallbackLink;
@@ -434,6 +467,8 @@ const app = {
     },
 
     confirmPixPayment() {
+        this.enviarParaN8n('PIX'); // <--- ENVIANDO PARA O N8N
+        
         this.copyPix('pix-key-checkout');
         setTimeout(() => {
             this.navigateTo('thank-you-view');
