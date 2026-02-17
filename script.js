@@ -23,48 +23,46 @@ const app = {
            
 
             // R$ 75,00
-            { id: 21, name: "Jogo de Talheres Faqueiro", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1601342630312-d8434770d381?w=500" },
-            { id: 23, name: "Garrafa Térmica de Café", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1516216657908-01e958742540?w=500" },
-            { id: 24, name: "Escorredor de Louças Inox", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1596627685292-623c23932e8f?w=500" },
-            { id: 30, name: "Jogo de Toalhas de Banho", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=500" },
-            { id: 33, name: "Cortina para Sala", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500" },
-            { id: 38, name: "Manta para Sofá", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1580301762395-5c2f849495dd?w=500" },
-            { id: 41, name: "Kit Tapetes de Banheiro (Luxo)", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=500" },
-            { id: 42, name: "Protetor de Colchão Queen", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1631049552240-59c37f7e8c18?w=500" },
-            { id: 48, name: "Kit de Potes Herméticos", price: 75.00, desc: "", img: "https://images.unsplash.com/photo-1517135388049-266854728cc5?w=500" },
+            { id: 21, name: "Jogo de Talheres Faqueiro", price: 75.00, desc: "", img: "https://down-br.img.susercontent.com/file/26eb395e4032dfc2a5703eeb30f6bce6" },
+            { id: 23, name: "Garrafa Térmica de Café", price: 75.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTgr_YOfVPJUKtZvz2bWm8ttenwA8eL7HxbDs98QLgoYu0LI6KVInyEeHEknCyqpLrYs_BUItY0GbRFimGRoXby5VKZfB-JVtxfJCiZ4b-NLn6eRxdVNUuwRg&usqp=CAc" },
+            { id: 30, name: "Jogo de Toalhas de Banho", price: 75.00, desc: "", img: "https://feiraodetoalhas.cdn.magazord.com.br/img/2025/03/produto/8585/toalha-banho-banhao-gigante-rosto-felpuda-karsten-lumina-2025.jpg" },
+            { id: 33, name: "Cortina para Sala", price: 75.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRJAar6H8OHNdjRYVfl727lbvnknaOSYc41FdJ2SvbGCFaFpGeKMDClIKTXR0ICmg9qbkD36KcWs056OnhTRm0-bEgW5j5c&usqp=CAc" },
+            { id: 38, name: "Manta para Sofá", price: 75.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQSffXAO1mtr-5rpOdB_viuhjsa0P-Xd6A9M1zJV7mf1YP81q6dPHx3qbkQlNtHX8434hwbScfEtH8pkzTGAk0I9jp-5hISviZprrGVM3_xa7mIX8leDC7zkGhGdeeSnNSV8hgZdE7Qp9o&usqp=CAc" },
+            { id: 41, name: "Kit Tapetes de Banheiro", price: 75.00, desc: "", img: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m0k7x5ekz04da7" },
+            { id: 48, name: "Kit de Potes Herméticos", price: 75.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTtwS889vFDyXryfrnSQEZQdBNbBFtBJY1w9dJ9-9G6L5mVA08DSV_GmZjkkga5mC6p8zpnO-ko-S7-ruY-kJKGCNDs9Fyeau7EoV-8OojA--Uzu9PC7AZbFnKGVahO92uSXuK26XLF5lU&usqp=CAc" },
 
             // R$ 100,00
-            { id: 13, name: "Sanduicheira e Grill", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1592398436589-94ae4a899933?w=500" },
-            { id: 17, name: "Ferro de Passar a Vapor", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1549488497-276e23c2686d?w=500" },
-            { id: 22, name: "Jogo de Travessas de Vidro", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1627483298606-35c91cf97f16?w=500" },
-            { id: 37, name: "Kit 4 Travesseiros", price: 100.00, desc: "", img: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e6?w=500" },
+            { id: 13, name: "Cupcake Maker", price: 100.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRLHCwFFfNJm2_H6OQEMsx0XTiimYv8H2vb0A43rUflteXzKWXer43ap5a_yurMEgUBtIUOJPGy4QQxqoegpwK-7b3ueZYMtosW0qh0wklM6MWoZoGzGAZLO8NHW-bz9Jbsf7_WHauqDw&usqp=CAc" },
+            { id: 17, name: "Ferro de Passar a Vapor", price: 100.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSLZpQtqljtHWylhb6xlf3dc0sbp_QwZP9-pOy1S4hr_2I4Nbxf3O_3q0WLuyeHEOEiepnQ-az2HwcxHwPQJdg1XufkEyspruYFNA5YezvsScGvCE9VI5Faz48Bq5zkYsOOE_gL63iHVw&usqp=CAc" },
+            { id: 22, name: "Jogo de Travessas de Vidro", price: 100.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS28ykXdmKvqpBu1m01-_BwEeCQHl1RGfBSKN1XPBlamFwmC6oRU7aVUXs6lRddOl6fN2cA-ExGMwTl2X_VzHIjLLNIzO0ipZ1_j67Qvq10Mkrzk7xg19wM3xMSFcth4_Rs35qGGA&usqp=CAc" },
+            { id: 37, name: "Lençol Cama Queen", price: 100.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTu7ka4UYUuernhP-QkQ7WTXsTbTBLErRXpe4a0QPxoJhmmAXDIAKlsAWnYEL2yFMHLNrXTJv0jA1aHu6xNGI15Jgr0uWiK47XQwtfEn6iOp_OKTNKHUUJ-dQIAMiqquwPfQioLhg4hs9w&usqp=CAc" },
 
             // R$ 125,00
-            { id: 18, name: "Mixer Turbo", price: 125.00, desc: "", img: "https://images.unsplash.com/photo-1609156543029-79a4c0032332?w=500" },
+            { id: 18, name: "Mixer Turbo", price: 125.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTVml7nmVZG4RAX0zL9Rk1HTLI34w5hXLJL4rag19pc6BoCVwvX3yQsl-CHmQy4S_1u_n8c67hNpG18CQCq7gGvn_t1-HBi2MCvDg0TQkCxkj3Lshvfv1CE_WJ0vExPx1j4-qOgTzE&usqp=CAc" },
             { id: 36, name: "Tapete para Sala", price: 125.00, desc: "", img: "https://images.unsplash.com/photo-1575414003591-ece8d0416c7a?w=500" },
 
             { id: 5, name: "Vara de Pesca pro NOIVO", price: 125.00, desc: "", img: "https://http2.mlstatic.com/D_NQ_NP_2X_867593-MLB93231018614_092025-F-kit-pesca-molinete-marine-sports-arena-4000-vara-linha.webp" },
            
             // R$ 150,00
-            { id: 1, name: "Chapinha", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1562362336-659635038e94?w=500" },
-            { id: 6, name: "Maleta de Ferramentas Completa", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=500" },
-            { id: 10, name: "Liquidificador Turbo", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1570222094114-28a9d88a27e6?w=500" },
-            { id: 12, name: "Cafeteira Elétrica", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1517080314053-e546d148e658?w=500" },
-            { id: 29, name: "Jogo de Cama Queen 4 Peças", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500" },
-            { id: 32, name: "Jogo Cobre-leito Queen", price: 150.00, desc: "", img: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=500" },
+           
+            { id: 10, name: "Liquidificador Turbo", price: 150.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRVl69J31Rkj1kTcQJTfi48CZwPwAYS_nQamgNxEn6OhAG3g1HIiDYCAQz3nPmykqFmjSMmNjmt1h1v3jjHmdHdJZaDvdSqR7oudJWlQt61InpPArQ3P5SYauHPmxoGzQJfE_u0BA&usqp=CAc" },
+            { id: 12, name: "Cafeteira Elétrica", price: 150.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQIo08UY_J1-RXmoWkkzaC4ukaEzlBDxkSVU-ZCTCOcT3LZDIRrxhyggQalYolMvFqM9zFl70-qp92lSe7kE_sI0x-M9HO_hMPil7vXonObhUU6Md9M6u5YmruLdTDAAbTb7p_VLH4&usqp=CAc" },
+            { id: 29, name: "Cobertor de Cama Queen", price: 150.00, desc: "", img: "https://images.yampi.me/assets/stores/lindacasa/uploads/images/coberdrom-cobertor-queen-1-peca-mantasherpa-petit-poa-rosa-6453c398110b2-large.jpg" },
+            { id: 32, name: "Jogo Cobre leito Queen", price: 150.00, desc: "", img: "https://io.convertiez.com.br/m/essencialenxovais/shop/products/images/35496/medium/kit-cobre-leito-queen-felicita-marfim-9-pecas_74025.jpg" },
 
             // R$ 175,00
-            { id: 14, name: "Panela de Arroz Elétrica", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1632057790073-678c430e70ba?w=500" },
-            { id: 16, name: "Ventilador de Coluna", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1618941716939-553df3c6c278?w=500" },
-            { id: 43, name: "Jogo de Lençol Queen 100% Algodão", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?w=500" },
+           
+            { id: 16, name: "Ventilador", price: 175.00, desc: "", img: "https://images.unsplash.com/photo-1618941716939-553df3c6c278?w=500" },
+            
             { id: 3, name: "Panela de Arroz Elétrica", price: 175.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTIjs2k1Zcz-Ts0GyJW4JGXcLj0Zh2_VttWmGy4Lc0f2384uZjXh5m3FTq2Ygib7yR93L19gsBWt4xFCPcdpGZ06S8qL2lS_3tAEGTaBzd3XlnFAjlnKqc9aqaW82-f9HRdJOirNw&usqp=CAc" },
            
             // R$ 200,00
-            { id: 2, name: "Secador de Cabelo", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500" },
-            { id: 15, name: "Processador de Alimentos", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1585517263592-d9633273e971?w=500" },
-            { id: 28, name: "Edredom Casal Queen", price: 200.00, desc: "", img: "https://images.unsplash.com/photo-1522771753014-df00418c4e4f?w=500" },
+            { id: 15, name: "Espremedor de Suco", price: 200.00, desc: "", img: "https://dleyjack4mlu0.cloudfront.net/Custom/Content/Products/14/46/1446_espremedor-de-frutas-mondial-cozinha-e-10-eletrico-inox-250w_l1_637387199500032283.webp" },
+            { id: 28, name: "Pipoqueira Elétrica", price: 200.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTT0qeqmCmjbhyMQ7WgkujJWqpNIfVy47FvTL6lUmIaJlLTIbhcFqoM3499ENWLE0oG47ix7mWQv8bygaZg1bKEiIvQiD-JNv-LLyAB8I-NnPdSed9gHZZkQfOLChl0zfE3rZD25A&usqp=CAc" },
+            { id: 118, name: "Fondue", price: 200.00, desc: "", img: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRVEX6gUONIkW8n_02zv5a9RllvIKvIvXUpqG5GfGWBwkvemXqyiNDzCIv7-lDXxw2m8gS7bzqBVlYtfxWDekRscdVahgUIG6puE1_olgvF219SBB_VZaLjemsUGg&usqp=CAc" },
 
-            
+            { id: 119, name: "Mesa de Cabeceira", price: 200.00, desc: "", img: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lt4a1zduaddr30" },
+ 
             
 
             // R$ 250,00
