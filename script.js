@@ -66,7 +66,7 @@ const app = {
             
 
             // R$ 250,00
-            { id: 20, name: "Aparelho de Jantar 20 Peças", price: 250.00, desc: "", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR88xHEnnl27YdU2l5pQ3tAHXcPAVkhRnLT8jgkEzQvMK8o2vkPHDDhpepMVq1vlpuefowXE55uxDgZYi-uWCoWIth98_TpX2IZ28s58FsYjyTKiAzWyHkJwM5TMUYcx5jMoQ-RRg7C4w&usqp=CAc" },
+            { id: 20, name: "Aparelho de Jantar 20 Peças", price: 250.00, desc: "", img: "https://www.havan.com.br/media/catalog/product/cache/820af7facfa7aca6eb3c138e3457dc8d/a/p/aparelho-de-jantar-donna-maite-12-pecas_1164564.webp" },
 
             // R$ 275,00
             
@@ -80,7 +80,7 @@ const app = {
             
 
             // R$ 375,00
-            { id: 8, name: "Micro-ondas", price: 450.00, desc: "", img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRy2m719TBwGQCLVc1Y_l3Edb8Hnbe4vx7cED_ddYMw1HhEfpfzQzpHAV928DR4vzX0j-2kufPz4AR3DUFbbV92eRuZs4s_MbTS82goGAwD56XMFWlPDMT-aI_GuyeuJGKaQrXDOw&usqp=CAc" },
+            { id: 8, name: "Micro-ondas", price: 450.00, desc: "", img: "https://images.kabum.com.br/produtos/fotos/184362/microondas-panasonic-32l-220v-900w-vidro-display-digital-preto-nn-st66lbruk_1629748372_gg.jpg" },
 
             // R$ 450,00
             { id: 34, name: "Box Cama Queen", price: 450.00, desc: "", img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRBZz0xKalHxHnwa_FVMp30_y5Vzc-wMT7zCRpDERoG3p5ddbirDDVLSch66ADW6lPmDmXDJTUQHLpzCw4xU3bjXLvBfggUjm-Pt4HCkmKQRZIXJMED54YkQjvu-8XE95PxZmhqX0mz1g&usqp=CAc" },
